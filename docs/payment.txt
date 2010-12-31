@@ -49,6 +49,9 @@ credentials you need to configure this module.
 PayPal
 ------
 
+Satchmo uses `Paypal's Instant Payment Notification <https://www.paypal.com/ipn>`_ service. The notes below describe how to configure
+it for your setup.
+
 Configuration
 ^^^^^^^^^^^^^
 
@@ -92,6 +95,28 @@ Configuration
 .. data:: PAYMENT_PAYPAL.URL_BASE
 
    Defaults to `^paypal/`.
+
+Step by Step Instructions for Configuring Paypal IPN
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The following steps describe how to configure Paypal IPN for production use.
+
+    1.  Make sure that 'payment.modules.paypal' is listed in your INSTALLED_APPS tuple, within your settings.py file.
+
+Then go into your /admin settings and ensure the configuration is correct for yuour site:
+    
+    2. In Site Settings -> Payment Settings, Check "Accept real payments".
+    3. In Site Settings -> Paypal Payment Settings, enter your Merchant Paypal account email 
+    4. In Site Settings -> Paypal Payment Settings verify that POST URL is: https://www.paypal.com/cgi-bin/webscr 
+    5. If you want paypal to adjust your stock levels, make sure your Track inventory levels is checked                       
+
+Now, configure your Paypal Merchant Account through the Paypal website:
+    
+    6. In History select IPN History 
+    7. Select the enable IPN option
+    8. Use the correct Notification URL. For example: http://www.mydomain.com/checkout/paypal/ipn/
+
+Double check your Satchmo sites domain name to make sure it matches the notification url above:
+    9. Go to /admin/sites/site/ and make sure your domain name is the same as the one you configured about in PayPal. In the example above, under Sites put in mydomain.com
 
 .. index:: Google Checkout
 
