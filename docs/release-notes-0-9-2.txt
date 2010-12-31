@@ -50,6 +50,9 @@ Bug Fixes
 - Make sure jquery correctly shows error messages on product pages
 - Fixed problem where category caching was not handling translations correctly
 - Ensure Ajax calls in checkout use SSL if it is turned on
+- Akismet for comment moderation is fixed
+- Improvements to South migrations
+- Update Paypal IPN docs
 
 Performance Improvements
 ------------------------
