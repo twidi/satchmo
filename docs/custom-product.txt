@@ -107,7 +107,7 @@ create a template named ``product/detail_mynewproduct.html`` with the following
 content::
 
 
-    {% extends "base_product.html" %}
+    {% extends "product/product.html" %}
 
     {% block title %}{{ product.mynewproduct.title }}{% endblock title %}
 
