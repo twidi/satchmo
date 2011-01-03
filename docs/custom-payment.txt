@@ -47,14 +47,13 @@ the command line.
 
 Here is a stub you can use to create your own processor::
 
-	from payment.modules.base imort BasePaymentProcessor, ProcessorResult
+    from payment.modules.base import BasePaymentProcessor, ProcessorResult
+
     class PaymentProcessor(BasePaymentProcessor):
-
-
         def __init__(self, settings):
             # Set up your configuration for items like
             # Test server, url, various flags and settings
-        	super(PaymentProcessor, self).__init__('example', settings)
+            super(PaymentProcessor, self).__init__('example', settings)
 
         def capture_payment(self):
             # Send the data via the appropriate manner and return a ProcessorResult
@@ -75,32 +74,18 @@ the existing working modules are great examples of what to setup.  The basic for
 Create the new configuration group::
 
     PAYMENT_GROUP = ConfigurationGroup('PAYMENT_MYNEWPROCESSOR',
-    _('My New Processor Payment Settings'),
-    requires=PAYMENT_MODULES,
-    ordering=102)
+        _('My New Processor Payment Settings'),
+        ordering=102)
+
+.. Note:: The key of the ``ConfigurationGroup`` must be the module name, upper-cased.
+For example, if your custom payment module was located in ``mypaymentmodules.mynewprocessor``,
+the ``ConfigurationGroup`` should be given the key 'PAYMENT_MYNEWPROCESSOR'.
+The reason for this is that the ``active_gateways()`` function in ``payment/__init__.py`` attempts 
+to automatically determine these keys by appending the upper-cased module name to 'PAYMENT_'.
 
 Now register the settings you need::
 
-    config_register([
-
-        StringValue(PAYMENT_GROUP,
-            'KEY',
-            description=_("Module key"),
-            hidden=True,
-            default = 'MYNEWPROCESSOR'),
-
-        ModuleValue(PAYMENT_GROUP,
-            'MODULE',
-            description=_('Implementation module'),
-            hidden=True,
-            default = 'satchmo.payment.modules.mynewprocessor'),
-
-        BooleanValue(PAYMENT_GROUP,
-            'SSL',
-            description=_("Use SSL for the checkout pages?"),
-            default=False),
-
-
+    config_register_list(
         BooleanValue(PAYMENT_GROUP,
             'LIVE',
             description=_("Accept real payments"),
@@ -133,14 +118,12 @@ Now register the settings you need::
             description=_('Your Processor password'),
             default=""),
 
-
         BooleanValue(PAYMENT_GROUP,
             'EXTRA_LOGGING',
             description=_("Verbose logs"),
             help_text=_("Add extensive logs during post."),
             default=False)
-
-    ])
+    )
 
 All of these settings can be accessed in your ``__init__`` method (shown above).
 For example, the LIVE value above can be accessed by using ``settings.LIVE.value``
@@ -159,7 +142,7 @@ Most payment processing have similar steps:
 The ``views.py`` file contains the information that maps your processor views to the existing
 views or your own custom view.
 
-For most people, the views contained in payment.common.views will be sufficient.  The example below
+For most people, the views contained in payment.views will be sufficient.  The example below
 maps these views to views already available in Satchmo::
 
     from livesettings import config_get_group
@@ -179,7 +162,7 @@ However, there is nothing stopping you from creating your own view::
         return render_to_response(template, context)
 
 
-All of the current satchmo payment views are in ``/payment/common/views``.
+All of the current satchmo payment views are in ``/payment/views``.
 Please review these before trying to build one of your own!
 
 Url configuration
@@ -197,11 +180,11 @@ For most processors, a simple file would look like this::
     config = config_get_group('PAYMENT_MYNEWPROCESSOR')
 
     urlpatterns = patterns('satchmo',
-         (r'^$', 'payment.modules.myprocessor.views.pay_ship_info',
+         (r'^$', 'mypaymentmodules.myprocessor.views.pay_ship_info',
                         {'SSL':config.SSL.value}, 'MYNEWPROCESSOR_satchmo_checkout-step2'),
          (r'^confirm/$', 'payment.modules.trustcommerce.views.confirm_info',
                         {'SSL':config.SSL.value}, 'MYNEWPROCESSOR_satchmo_checkout-step3'),
-         (r'^success/$', 'payment.common.views.checkout.success',
+         (r'^success/$', 'payment.views.checkout.success',
                         {'SSL':config.SSL.value}, 'MYNEWPROCESSOR_satchmo_checkout-success'),
     )
 
@@ -218,7 +201,7 @@ In order to enable your new payment processor, you must add it to your INSTALLED
     INSTALLED_APPS = (
             ...
             'payment',
-            'payment.modules.myprocessor',
+            'mypaymentmodules.myprocessor',
             ...
 
 
