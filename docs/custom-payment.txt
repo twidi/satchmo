@@ -40,7 +40,7 @@ does 4 things:
  - Takes order data and formats it in the appropriate manner (``prepareData``)
  - Sends the data to the processing server/url (``authorize_payment``, ``capture_payment``, ``capture_authorized_payment``) and returns the results.
 
-Of them, only ``capture_payment`` is required.  If the processor can both authorize and process, then you need to add a function "can_authorize", which returns True, and implement the other two methods.  See the ``dummy`` module for an example.
+Of them, only ``capture_payment`` is required.  If the processor can both authorize and process, then you need to add a function ``can_authorize``, which returns True, and implement the other two methods.  See the ``dummy`` module for an example.
 
 Optionally, the processor can include include test code so that it is easy to verify from
 the command line.
@@ -78,10 +78,11 @@ Create the new configuration group::
         ordering=102)
 
 .. Note:: The key of the ``ConfigurationGroup`` must be the module name, upper-cased.
+
 For example, if your custom payment module was located in ``mypaymentmodules.mynewprocessor``,
-the ``ConfigurationGroup`` should be given the key 'PAYMENT_MYNEWPROCESSOR'.
+the ``ConfigurationGroup`` should be given the key ``PAYMENT_MYNEWPROCESSOR``.
 The reason for this is that the ``active_gateways()`` function in ``payment/__init__.py`` attempts 
-to automatically determine these keys by appending the upper-cased module name to 'PAYMENT_'.
+to automatically determine these keys by appending the upper-cased module name to ``PAYMENT_``.
 
 Now register the settings you need::
 
