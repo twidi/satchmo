@@ -12,7 +12,6 @@ from django.utils.translation import ugettext_lazy as _
 from livesettings import config_value, config_choice_values, SettingNotSet
 from payment.fields import PaymentChoiceCharField, CreditChoiceCharField
 from satchmo_store.contact.models import Contact
-from satchmo_store.shop.models import OrderPayment
 import base64
 import config
 import keyedcache
@@ -43,7 +42,7 @@ class CreditCardDetail(models.Model):
     Stores an encrypted CC number, its information, and its
     displayable number.
     """
-    orderpayment = models.ForeignKey(OrderPayment, unique=True, 
+    orderpayment = models.ForeignKey('shop.OrderPayment', unique=True, 
         related_name="creditcards")
     credit_type = CreditChoiceCharField(_("Credit Card Type"), max_length=16)
     display_cc = models.CharField(_("CC Number (Last 4 digits)"),
