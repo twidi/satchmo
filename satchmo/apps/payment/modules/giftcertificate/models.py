@@ -8,7 +8,7 @@ from payment.modules.giftcertificate.utils import generate_certificate_code
 from payment.utils import get_processor_by_key
 from product.models import Product
 from satchmo_store.contact.models import Contact
-from satchmo_store.shop.models import OrderPayment, Order
+from satchmo_store.shop.models import Order
 import logging
 
 GIFTCODE_KEY = 'GIFTCODE'
@@ -104,7 +104,7 @@ class GiftCertificateUsage(models.Model):
     notes = models.TextField(_('Notes'), blank=True, null=True)
     balance_used = models.DecimalField(_("Amount Used"), decimal_places=2,
         max_digits=8, )
-    orderpayment = models.ForeignKey(OrderPayment, null=True, verbose_name=_('Order Payment'))
+    orderpayment = models.ForeignKey('shop.OrderPayment', null=True, verbose_name=_('Order Payment'))
     used_by = models.ForeignKey(Contact, verbose_name=_('Used by'),
         blank=True, null=True, related_name='giftcertificates_used')
     giftcertificate = models.ForeignKey(GiftCertificate, related_name='usages')
