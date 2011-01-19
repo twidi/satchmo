@@ -1299,7 +1299,7 @@ class ProductPriceLookup(models.Model):
     siteid = models.IntegerField()
     key = models.CharField(max_length=60, null=True)
     parentid = models.IntegerField(null=True)
-    productslug = models.CharField(max_length=255)
+    productslug = models.CharField(max_length=255, db_index = True)
     price = models.DecimalField(max_digits=14, decimal_places=6)
     quantity = models.DecimalField(max_digits=18, decimal_places=6)
     active = models.BooleanField()
