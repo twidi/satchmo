@@ -75,7 +75,7 @@
     {% endif %}
   {% endif %}
 {% else %}
-  {# no discount %}
+  {# no discount #}
   <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item}}" />
   <input type="hidden" name="amount_{{forloop.counter}}" value="{{item.unit_price|truncate_decimal:2}}" />
 {% endif %}
