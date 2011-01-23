@@ -58,6 +58,7 @@ Performance Improvements
 ------------------------
 - Tweaks to price queries to reduce unneeded queries
 - Made a couple of view and template changes to reduce the number of SQL queries per page
+- Added db index on Price Lookup table
 
 
 Migration Notes
@@ -88,3 +89,12 @@ Protx Payment Module Renamed
 ++++++++++++++++++++++++++++
 As of `rev 2051 <http://bitbucket.org/chris1610/satchmo/changeset/04f821df32ec>`_, the Protx module has been renamed to Sage Pay. You will need to manually copy over your former Protx credentials to
 the new Sage Pay module. No further changes should be necessary.
+
+ProductPriceLookup Index
+++++++++++++++++++++++++
+As of `rev 2120 <https://bitbucket.org/chris1610/satchmo/changeset/dd9fccf8a2aa>`_, the price lookup model has an index on the productslug to improve performance on large data sets.
+
+A south migration is included. To apply:
+    
+    python manage.py migrate product
+    
