@@ -17,6 +17,14 @@
 {% if error_message %}
 <div class="error">{{ error_message }}</div>
 {% endif %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 {% if not cart|length %}
     <h4>{% trans "Your cart is empty." %}</h4>
 {% else %}

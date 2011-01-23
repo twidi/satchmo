@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
+from django.contrib import messages
 from django.views.decorators.cache import never_cache
 from livesettings import config_value
 from satchmo_store.shop.models import Order, OrderStatus
@@ -39,7 +40,7 @@ class ConfirmController(object):
         self.order = None
         self.cart = None
         self.extra_context = extra_context
-                
+        self.no_stock_checkout = config_value('PRODUCT','NO_STOCK_CHECKOUT')        
         #to override the form_handler, set this
         #otherwise it will use the built-in `_onForm`
         self.onForm = self._onForm
@@ -211,7 +212,30 @@ class ConfirmController(object):
                 {'message': _('Your order is no longer valid.')})
             self.invalidate(render_to_response(self.templates['404'],
                                                context_instance=context))
-
+        #Do a check to make sure we don't have products that are no longer valid
+        #or have sold out since the user started the process
+        not_enough_qty = False
+        invalid_prod = False
+        error_products = []
+        for cartitem in self.cart:
+            stock = cartitem.product.items_in_stock
+            if not self.no_stock_checkout:      # If we want to enforce inventory, check again
+                if stock < cartitem.quantity:
+                    not_enough_qty = True
+                    error_products.append(cartitem.product.name)
+            if not cartitem.product.active:
+                invalid_prod = True
+                error_products.append(cartitem.product.name)
+        if not_enough_qty or invalid_prod:
+            prod_list = ",".join(error_products)
+            if not_enough_qty:
+                error_message = _('There are not enough %(prod)s in stock to complete your order. Please modify your order.') % {'prod':prod_list}
+            else:
+                error_message = _('The following products %(prod)s are no longer available. Please modify your order.') % {'prod':prod_list}
+            messages.error(self.request, error_message)
+            url = urlresolvers.reverse('satchmo_cart')
+            self.invalidate(HttpResponseRedirect(url))
+            return False
         self.valid = True
         signals.confirm_sanity_check.send(self, controller=self)
         return True
