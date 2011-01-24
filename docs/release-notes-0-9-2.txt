@@ -53,6 +53,7 @@ Bug Fixes
 - Akismet for comment moderation is fixed
 - Improvements to South migrations
 - Update Paypal IPN docs
+- Fix issue where inactive or out of stock products could be purchased if there was a time lag between cart addition and checkout
 
 Performance Improvements
 ------------------------
