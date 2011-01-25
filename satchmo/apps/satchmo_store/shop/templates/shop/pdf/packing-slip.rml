@@ -60,7 +60,7 @@
 			<drawRightString x="20cm" y="266mm">{% now "N j, Y" %}</drawRightString>
 
 			<setFont name="Helvetica" size="18"/>
-			<drawString x="13cm" y="230mm">{% trans "PACKING SLIP" %}, {% trans "Page" %} 2</drawString>
+			<drawString x="13cm" y="230mm">{% trans "PACKING SLIP" %}, {% trans "Page" %} <pageNumber/></drawString>
             <rect x="14.5cm" y="26cm" width="6.5cm" height="1.5cm" fill="no" stroke="yes" round="5mm" />
 		</pageGraphics>
 		<frame id="column" x1="2.0cm" y1="1.5cm" width="18cm" height="17cm"/>
