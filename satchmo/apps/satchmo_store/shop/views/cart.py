@@ -347,7 +347,7 @@ def product_from_post(productslug, formdata):
             else:
                 price_change = zero
             data = { 'name' : customfield.translated_name(),
-                     'value' : formdata["custom_%s" % customfield.slug],
+                     'value' : formdata.get("custom_%s" % customfield.slug, ''),
                      'sort_order': customfield.sort_order,
                      'price_change': price_change }
             details.append(data)

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<AccessRequest xml:lang="en-US">
+  <AccessLicenseNumber>{{config.xml_key}}</AccessLicenseNumber>
+  <UserId>{{config.userid}}</UserId>
+  <Password>{{config.password}}</Password>
+</AccessRequest>
+<?xml version="1.0"?>
+<TimeInTransitRequest xml:lang="un-US">
+  <Request>
+    <TransactionReference>
+      <CustomerContext>Time In Transit</CustomerContext>
+      <XpciVersion>1.0002</XpciVersion>
+    </TransactionReference>
+    <RequestAction>TimeInTransit</RequestAction>
+  </Request>
+  <TransitFrom>
+    <AddressArtifactFormat>
+      <PostcodePrimaryHigh>{{ shipping_address.postal_code }}</PostcodePrimaryHigh>
+      <PostcodePrimaryLow>{{ shipping_address.postal_code }}</PostcodePrimaryLow>
+      <CountryCode>{{shipping_country_code}}</CountryCode>
+    </AddressArtifactFormat>
+  </TransitFrom>
+  <TransitTo>
+    <AddressArtifactFormat>
+      <PostcodePrimaryHigh>{{ contact.shipping_address.postal_code }}</PostcodePrimaryHigh>
+      <PostcodePrimaryLow>{{ contact.shipping_address.postal_code }}</PostcodePrimaryLow>
+      <CountryCode>{{ contact.shipping_address.country.iso2_code }}</CountryCode>
+      <ResidentialAddressIndicator />
+    </AddressArtifactFormat>
+  </TransitTo>
+  <PickupDate>{{ pickup_date }}</PickupDate>
+  <MonetaryValue>{{ price }}</MonetaryValue>
+</TimeInTransitRequest>

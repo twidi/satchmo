@@ -138,6 +138,9 @@ class CustomTextField(models.Model):
     def translated_name(self, language_code=None):
         return lookup_translation(self, 'name', language_code)
 
+    def __unicode__(self):
+        return u"CustomText: %s" % self.name
+
     class Meta:
         ordering = ('sort_order',)
         unique_together = ('slug', 'products')

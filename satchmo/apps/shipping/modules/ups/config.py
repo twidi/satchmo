@@ -17,7 +17,7 @@ config_register_list(
         description=_("UPS XML Access Key"),
         help_text=_("XML Access Key Provided by UPS"),
         default=u""),
-    
+
     StringValue(SHIPPING_GROUP,
         'USER_ID',
         description=_("UPS User ID"),
@@ -29,13 +29,13 @@ config_register_list(
         description=_("UPS Account Number"),
         help_text=_("UPS Account Number."),
         default=u""),
-    
+
     StringValue(SHIPPING_GROUP,
         'USER_PASSWORD',
         description=_("UPS User Password"),
         help_text=_("User password provided by UPS site."),
         default=u""),
-    
+
     MultipleStringValue(SHIPPING_GROUP,
         'UPS_SHIPPING_CHOICES',
         description=_("UPS Shipping Choices Available to customers. These are valid domestic codes only."),
@@ -71,6 +71,12 @@ config_register_list(
         description=_("Single Box?"),
         help_text=_("Use just one box and ship by weight?  If no then every item will be sent in its own box."),
         default=True),
+
+    BooleanValue(SHIPPING_GROUP,
+        'TIME_IN_TRANSIT',
+        description=_("Time in Transit?"),
+        help_text=_("Use the UPS Time In Transit API? It is slower but delivery dates are more accurate."),
+        default=False),
 
     StringValue(SHIPPING_GROUP,
         'PICKUP_TYPE',
