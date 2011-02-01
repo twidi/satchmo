@@ -18,6 +18,7 @@ New Features
 - Add a new config for the persistent cart to provide more options for how it handles returning users
 - New template tag to show tiered shipping pricing table
 - Control product variations inclusion in searching view the settings
+- UPS module will display actual shipping times
 
 Translations
 ------------
@@ -54,6 +55,7 @@ Bug Fixes
 - Improvements to South migrations
 - Update Paypal IPN docs
 - Fix issue where inactive or out of stock products could be purchased if there was a time lag between cart addition and checkout
+- Cart template tag now allows show_discount
 
 Performance Improvements
 ------------------------
