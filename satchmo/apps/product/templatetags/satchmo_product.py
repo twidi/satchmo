@@ -1,4 +1,6 @@
 from django import template
+from django.template import Node, Variable
+from django.template import TemplateSyntaxError
 from livesettings import config_value
 from product.models import Product
 from product.queries import bestsellers
@@ -79,6 +81,44 @@ def product_images(product, args=""):
     return q
 
 register.filter('product_images', product_images)
+
+class FeaturedListNode(Node):
+    """Template Node tag which pushes the featured product list into the context"""
+    def __init__(self, var, nodelist):
+        self.var = var
+        self.nodelist = nodelist
+
+    def render(self, context):
+
+        prods = Product.objects.featured_by_site()
+        context[self.var] = prods
+
+        context.push()
+        context[self.var] = prods
+        output = self.nodelist.render(context)
+        context.pop()
+        return output
+
+@register.tag
+def product_featured_list(parser, token):
+    """Push the featured product list into the context using the given variable name.
+
+    Sample usage::
+
+        {% product_featured_list as var %}
+
+    """
+    args = token.split_contents()
+    ct = len(args)
+    if not ct == 3:
+        raise TemplateSyntaxError("%r tag expecting 'as varname', got: %s" % (args[0], args))
+
+    var = args[2]
+
+    nodelist = parser.parse(('endproduct_featured_list',))
+    parser.delete_first_token()
+
+    return FeaturedListNode(var, nodelist)
 
 def smart_attr(product, key):
     """
