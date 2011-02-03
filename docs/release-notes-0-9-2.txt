@@ -19,6 +19,7 @@ New Features
 - New template tag to show tiered shipping pricing table
 - Control product variations inclusion in searching view the settings
 - UPS module will display actual shipping times
+- New template tag product_featured_list
 
 Translations
 ------------
