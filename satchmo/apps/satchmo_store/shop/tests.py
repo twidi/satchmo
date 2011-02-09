@@ -44,7 +44,7 @@ def get_step1_post_data(US):
         'ship_city': 'Springfield',
         'ship_state': 'MO',
         'ship_postal_code': '81123',
-        'paymentmethod': 'PAYMENT_DUMMY',
+        'paymentmethod': 'DUMMY',
         'copy_address' : True
         }
 

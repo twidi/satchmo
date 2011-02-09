@@ -114,8 +114,9 @@ def labelled_gateway_choices():
     for module, group in active_gateways():
         defaultlabel = module.split('.')[-1]
         label = _(config_value(group, 'LABEL', default = defaultlabel))
-        choices.append((group, label))
-
+        key = config_value(group,'KEY')
+        choices.append((key, label))
+        
     signals.payment_choices.send(None, choices=choices)
     return choices
 
