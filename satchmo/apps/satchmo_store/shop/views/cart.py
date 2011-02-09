@@ -17,7 +17,7 @@ from product.views import optionids_from_post
 from satchmo_store.shop import forms
 from satchmo_store.shop.exceptions import CartAddProhibited
 from satchmo_store.shop.models import Cart, CartItem, NullCart, NullCartItem
-from satchmo_store.shop.signals import satchmo_cart_changed, satchmo_cart_add_complete, satchmo_cart_details_query
+from satchmo_store.shop.signals import satchmo_cart_changed, satchmo_cart_add_complete, satchmo_cart_details_query, satchmo_cart_view
 from satchmo_utils.numbers import RoundedDecimalError, round_decimal
 from satchmo_utils.views import bad_or_missing
 import logging
@@ -93,8 +93,6 @@ def _set_quantity(request, force_delete=False):
         cartitem.delete()
         cartitem = NullCartItem(itemid)
     else:
-        from satchmo_store.shop.models import Config
-        config = Config.objects.get_current()
         if config_value('PRODUCT','NO_STOCK_CHECKOUT') == False:
             stock = cartitem.product.items_in_stock
             log.debug('checking stock quantity.  Have %d, need %d', stock, qty)
@@ -121,6 +119,10 @@ def display(request, cart=None, error_message='', default_view_tax=None):
         sale = find_best_auto_discount(products)
     else:
         sale = None
+
+    satchmo_cart_view.send(cart,
+                           cart=cart,
+                           request=request)
 
     context = RequestContext(request, {
         'cart': cart,
@@ -164,7 +166,7 @@ def add(request, id=0, redirect_to='satchmo_cart'):
     # Then we validate that we can round it appropriately.
     try:
         quantity = round_decimal(formdata['quantity'], places=cartplaces, roundfactor=roundfactor)
-    except RoundedDecimalError, P:
+    except RoundedDecimalError:
         return _product_error(request, product,
             _("Invalid quantity."))
 
@@ -327,13 +329,15 @@ def product_from_post(productslug, formdata):
     if 'ConfigurableProduct' in p_types:
         # This happens when productname cannot be updated by javascript.
         cp = product.configurableproduct
-        chosenOptions = optionids_from_post(cp, formdata)
-        optproduct = cp.get_product_from_options(chosenOptions)
-        if not optproduct:
-            log.debug('Could not fully configure a ConfigurableProduct [%s] with [%s]', product, chosenOptions)
-            raise Product.DoesNotExist()
-        else:
-            product = optproduct
+        # catching a nasty bug where ConfigurableProducts with no option_groups can't be ordered
+        if cp.option_group.count() > 0:
+            chosenOptions = optionids_from_post(cp, formdata)
+            optproduct = cp.get_product_from_options(chosenOptions)
+            if not optproduct:
+                log.debug('Could not fully configure a ConfigurableProduct [%s] with [%s]', product, chosenOptions)
+                raise Product.DoesNotExist()
+            else:
+                product = optproduct
 
     if 'CustomProduct' in p_types:
         try:

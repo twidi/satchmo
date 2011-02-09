@@ -47,6 +47,20 @@ order_success = django.dispatch.Signal()
 #satchmo_order_status_changed.send(self.order, oldstatus=oldstatus, newstatus=status, order=order)
 satchmo_order_status_changed=django.dispatch.Signal()
 
+#: Sent whenever the ``satchmo_store.shop.views.cart.display`` is called, prior to
+#: returning the cart.
+#: :param sender: The cart about to be displayed
+#: :type sender: ``satchmo_store.shop.models.Cart``
+#:
+#: :param cart: The cart about to be displayed
+#: :type sender: ``satchmo_store.shop.models.Cart``
+#:
+#: :param request: The request that requested the cart display
+#: :type request: ``django.http.HttpRequest``
+#:
+#: .. Note:: *cart* is the same as *sender*.
+satchmo_cart_view=django.dispatch.Signal()
+
 #
 # Signals sent by the Cart system
 #
