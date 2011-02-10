@@ -14,6 +14,8 @@
     </script>
 {% else %}
     <script type="text/javascript">
+    $(function() {
+    var pageTracker = _gat._getTrackerByName();
     pageTracker._addTrans(
      "{{order.id}}",
      "{{Store}}",
@@ -35,5 +37,6 @@
         );
     {% endfor %}
     pageTracker._trackTrans();
+    });
     </script>
 {% endif %}
