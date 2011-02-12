@@ -13,6 +13,10 @@
 <form method="post" action=".">{% csrf_token %}
     {{ form.next }}
 
+{% if allow_nickname %}
+    <tr><td>{{ form.username.label }}</td><td>{{ form.username }}</td></tr>
+    <tr><td></td><td>{% if form.username.errors %}*** {{ form.username.errors|join:", " }}{% endif %}</td></tr>
+{% endif %}
     <tr><td>{{ form.email.label_tag }}:</td><td>{{ form.email }}</td></tr>
     <tr><td></td><td>{% if form.email.errors %}*** {{ form.email.errors|join:", " }}{% endif %}</td></tr>
 

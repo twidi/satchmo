@@ -14,6 +14,12 @@ from signals_ahoy.signals import form_init, form_initialdata
 import logging
 import signals
 
+# I put this on all required fields, because it's easier to pick up
+# on them with CSS or JavaScript if they have a class of "required"
+# in the HTML. Your mileage may vary. If/when Django ticket #3515
+# lands in trunk, this will no longer be necessary.
+
+attrs_dict = { 'class': 'required' }
 log = logging.getLogger('accounts.forms')
 
 class EmailAuthenticationForm(AuthenticationForm):
@@ -40,6 +46,13 @@ class RegistrationForm(forms.Form):
     last_name = forms.CharField(label=_('Last name'),
         max_length=30, required=True)
     next = forms.CharField(max_length=200, required=False, widget=forms.HiddenInput())
+    username = forms.RegexField(regex=r'^[\w.@+-]+$',
+                                required=False,
+                                max_length=30,
+                                widget=forms.TextInput(attrs=attrs_dict),
+                                label=_(u'Username'),
+                                error_messages={'invalid':_('Please use only letters, numbers and @/./+/-/_')})
+
 
     def __init__(self, *args, **kwargs):
         contact = kwargs.get('contact', None)
@@ -71,6 +84,15 @@ class RegistrationForm(forms.Form):
         # validator to enforce "hard" passwords.
         return p1
 
+    def clean_username(self):
+        """Validate username is unique
+        """
+        username = self.cleaned_data.get('username',None)
+        if username and User.objects.filter(username__iexact=username).count() > 0:
+            raise forms.ValidationError(
+                ugettext("That username is already in use."))
+        return username
+        
     def clean_email(self):
         """Prevent account hijacking by disallowing duplicate emails."""
         email = self.cleaned_data.get('email', None)
@@ -97,8 +119,11 @@ class RegistrationForm(forms.Form):
         email = data['email']
         first_name = data['first_name']
         last_name = data['last_name']
-        username = generate_id(first_name, last_name, email)
-
+        allow_nickname = config_value('SHOP', 'ALLOW_NICKNAME_USERNAME')
+        if allow_nickname and data['username']:
+            username = data['username']
+        else:
+            username = generate_id(first_name, last_name, email)
         verify = (config_value('SHOP', 'ACCOUNT_VERIFICATION') == 'EMAIL')
 
         if verify:

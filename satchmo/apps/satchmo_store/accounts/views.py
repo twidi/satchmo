@@ -358,7 +358,8 @@ def register(request, redirect=None, template='registration/registration_form.ht
         ctx = {
             'form': todo,
             'title' : _('Registration Form'),
-            'show_newsletter' : show_newsletter
+            'show_newsletter' : show_newsletter,
+            'allow_nickname' : config_value('SHOP', 'ALLOW_NICKNAME_USERNAME')
         }
 
         if extra_context:
