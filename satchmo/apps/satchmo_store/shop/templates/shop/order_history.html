@@ -27,7 +27,7 @@
             {% for order in orders %}
             <tr>
                 <td class="ordernumber">
-                    <a href="{% url satchmo_order_tracking order.id %}">{{ order.id }}
+                    <a href="{% url satchmo_order_tracking order.id %}">{{ order.id }}</a>
                 </td>
                 <td class="orderstatus">
                     {{ order.status }}
