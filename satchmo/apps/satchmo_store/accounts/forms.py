@@ -92,7 +92,7 @@ class RegistrationForm(forms.Form):
             raise forms.ValidationError(
                 ugettext("That username is already in use."))
         return username
-        
+
     def clean_email(self):
         """Prevent account hijacking by disallowing duplicate emails."""
         email = self.cleaned_data.get('email', None)
@@ -102,17 +102,18 @@ class RegistrationForm(forms.Form):
 
         return email
 
-    def save(self, request=None, **kwargs):
+    def save(self, request=None, force_new=False, **kwargs):
         """Create the contact and user described on the form.  Returns the
         `contact`.
         """
         if self.contact:
             log.debug('skipping save, already done')
         else:
-            self.save_contact(request)
+            self.save_contact(request, force_new_contact = force_new)
+
         return self.contact
 
-    def save_contact(self, request):
+    def save_contact(self, request, force_new_contact = False):
         log.debug("Saving contact")
         data = self.cleaned_data
         password = data['password1']
@@ -148,10 +149,14 @@ class RegistrationForm(forms.Form):
 
         # If the user already has a contact, retrieve it.
         # Otherwise, create a new one.
-        try:
-            contact = Contact.objects.from_request(request, create=False)
+        contact = None
+        if not force_new_contact:
+            try:
+                contact = Contact.objects.from_request(request, create=False)
+            except Contact.DoesNotExist:
+                pass
 
-        except Contact.DoesNotExist:
+        if contact is None:
             contact = Contact()
 
         contact.user = user

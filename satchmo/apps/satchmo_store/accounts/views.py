@@ -99,7 +99,7 @@ def _assign_cart(request):
             log.debug("The user has no cart in the current session.")
     except:
         log.debug("Unable to assign cart user during login")
-    
+
 def _get_prev_cart(request):
     try:
         contact = Contact.objects.from_request(request)
@@ -114,7 +114,7 @@ def _get_prev_cart(request):
     except Exception, e:
         pass
 
-def register_handle_address_form(request, redirect=None):
+def register_handle_address_form(request, redirect=None, action_required=''):
     """
     Handle all registration logic.  This is broken out from "register" to allow easy overriding/hooks
     such as a combined login/register page.
@@ -133,16 +133,18 @@ def register_handle_address_form(request, redirect=None):
     except Contact.DoesNotExist:
         contact = None
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST.get('action', '') == action_required:
 
         form = RegistrationAddressForm(request.POST, shop=shop, contact=contact)
 
         if form.is_valid():
-            contact = form.save(request)
+            contact = form.save(request, force_new=True)
 
             if not redirect:
                 redirect = urlresolvers.reverse('registration_complete')
             return (True, HttpResponseRedirect(redirect))
+        else:
+            log.debug("createform errors: %s", form.errors)
 
     else:
         initial_data = {}
@@ -247,10 +249,14 @@ def activate(request, activation_key):
                               context_instance=context)
 
 
-def login_signup(request, template_name="contact/login_signup.html", registration_handler=register_handle_form):
+def login_signup(request,
+                 template_name="contact/login_signup.html",
+                 registration_handler=register_handle_form,
+                 handler_kwargs = {}):
     """Display/handle a combined login and create account form"""
 
     redirect_to = request.REQUEST.get(REDIRECT_FIELD_NAME, '')
+    handler_kwargs['redirect'] = redirect_to
 
     loginform = None
     createform = None
@@ -260,7 +266,7 @@ def login_signup(request, template_name="contact/login_signup.html", registratio
         action = request.POST.get('action', 'login')
         if action == 'create':
             #log.debug('Signup form')
-            ret = registration_handler(request, redirect=redirect_to)
+            ret = registration_handler(request, **handler_kwargs)
             success = ret[0]
             todo = ret[1]
             if len(ret) > 2:
@@ -297,7 +303,7 @@ def login_signup(request, template_name="contact/login_signup.html", registratio
     if not loginform:
         success, loginform = _login(request, redirect_to)
     if not createform:
-        ret = registration_handler(request, redirect_to)
+        ret = registration_handler(request, **handler_kwargs)
         success = ret[0]
         createform = ret[1]
         if len(ret) > 2:
@@ -331,7 +337,10 @@ def login_signup_address(request, template_name="contact/login_signup_address.ht
     """
     View which allows a user to login or else fill out a full address form.
     """
-    return login_signup(request, template_name=template_name, registration_handler=register_handle_address_form)
+    return login_signup(request,
+                        template_name=template_name,
+                        registration_handler=register_handle_address_form,
+                        handler_kwargs={'action_required' : 'create'})
 
 
 def register(request, redirect=None, template='registration/registration_form.html'):
