@@ -12,15 +12,15 @@
 {% endblock %}
 
 {% block content %}
-<h4>Quick Order Form</h4>
+<h4>{% trans "Quick Order Form" %}</h4>
 <form name="quickorder" method="post" action="{% url satchmo_quick_order %}">{% csrf_token %}
 <table>
 	<table id="quickOrder" cellspacing="0">
 		<tr class="head">
 			<th>&nbsp;</th>
 			<th>&nbsp;</th>
-			<th>Price</th>
-			<th>Qty</th>
+			<th>{% trans "Price" %}</th>
+			<th>{% trans "Qty" %}</th>
 		</tr>
 		{% for field in form %}{% with field.field.product as product %}
 		{% thumbnail product.main_image.picture 84x84 as image %}
