@@ -52,7 +52,7 @@ def add_toolbar_context(sender, context={}, **kwargs):
         st['st_new_order_ct'] = newq.count()
         amounts = newq.values_list('total', flat=True)
         if amounts:
-            newtotal = reduce(operator.add, amounts)
+            newtotal = reduce(operator.add, filter(None, amounts), 0) 
         else:
             newtotal = 0
         st['st_new_order_total'] = newtotal
