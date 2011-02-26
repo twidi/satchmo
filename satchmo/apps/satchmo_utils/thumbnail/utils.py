@@ -234,7 +234,7 @@ def _rename(old_name, new_name):
     try:
         shutil.move(os.path.join(settings.MEDIA_ROOT, old_name), os.path.join(settings.MEDIA_ROOT, new_name))
         return new_name
-    except IOError:
+    except (IOError, shutil.Error):
         return old_name
 
 # BJK Note: I think this might be the way to approach it
