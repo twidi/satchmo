@@ -243,7 +243,9 @@ class ShopTest(TestCase):
         setting.update(True)
 
         self.test_cart_adding(retest=True)
-        response = self.client.post(prefix + '/cart/remove/', {'cartitem': '1'})
+        response = self.client.get(prefix+'/cart/')
+        cartitem_id = response.context[0]['cart'].cartitem_set.all()[0].id
+        response = self.client.post(prefix + '/cart/remove/', {'cartitem': str(cartitem_id)})
         #self.assertRedirects(response, prefix + '/cart/',
         #    status_code=302, target_status_code=200)
         response = self.client.get(prefix+'/cart/')
@@ -298,11 +300,12 @@ class ShopTest(TestCase):
         self.client.login(username='fredsu', password='passwd')
 
         # Test pdf generation
-        response = self.client.get('/admin/print/invoice/1/')
+        order_id = Order.objects.all()[0].id
+        response = self.client.get('/admin/print/invoice/%d/' % order_id)
         self.assertContains(response, 'reportlab', status_code=200)
-        response = self.client.get('/admin/print/packingslip/1/')
+        response = self.client.get('/admin/print/packingslip/%d/' % order_id)
         self.assertContains(response, 'reportlab', status_code=200)
-        response = self.client.get('/admin/print/shippinglabel/1/')
+        response = self.client.get('/admin/print/shippinglabel/%d/' % order_id)
         self.assertContains(response, 'reportlab', status_code=200)
 
     def test_contact_login(self):
