@@ -15,12 +15,12 @@ urlpatterns = patterns('satchmo_ext.wishlist.views',
      (r'^remove/ajax$', 'wishlist_remove_ajax', {}, 'satchmo_wishlist_remove_ajax'),
      (r'^add_cart/$', 'wishlist_move_to_cart', {}, 'satchmo_wishlist_move_to_cart'),
 )
-
-wishbase = r'^' + config_value('SHOP','WISHLIST_SLUG') + '/'    
-wishpatterns = patterns('',
-    (wishbase, include('satchmo_ext.wishlist.urls'))
-)
+patterns_fn = patterns
 
 def add_wishlist_urls(sender, patterns=(), **kwargs):
+    wishbase = r'^' + config_value('SHOP','WISHLIST_SLUG') + '/'    
     log.debug('adding wishlist urls at %s', wishbase)
+    wishpatterns = patterns_fn('',
+        (wishbase, include('satchmo_ext.wishlist.urls'))
+    )
     patterns += wishpatterns
