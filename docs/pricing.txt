@@ -82,4 +82,5 @@ The price resolution process is straightforward.
   
 3. If the user has multiple tiers, return the lowest amount found in 2a & 2b.
 
-.. _Django_Extensions: http://code.google.com/p/django-command-extensions/
+.. _Django_Extensions: https://github.com/django-extensions/django-extensions/
+    Extensive Wiki on: http://code.google.com/p/django-command-extensions/

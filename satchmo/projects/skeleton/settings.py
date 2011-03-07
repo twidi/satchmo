@@ -72,7 +72,6 @@ MIDDLEWARE_CLASSES = (
     "threaded_multihost.middleware.ThreadLocalMiddleware",
     "satchmo_store.shop.SSLMiddleware.SSLRedirect",
     #"satchmo_ext.recentlist.middleware.RecentProductMiddleware",
-    #'djangologging.middleware.LoggingMiddleware',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -119,7 +118,7 @@ INSTALLED_APPS = (
     #'shipping.modules.tiered',
     #'satchmo_ext.newsletter',
     #'satchmo_ext.recentlist',
-    #'testimonials',
+    #'testimonials',         # dependency on  http://www.assembla.com/spaces/django-testimonials/
     'product',
     'product.modules.configurable',
     'product.modules.custom',
@@ -138,7 +137,7 @@ INSTALLED_APPS = (
     'satchmo_utils',
     #'shipping.modules.tieredquantity',
     #'satchmo_ext.tieredpricing',
-    #'typogrify',
+    #'typogrify',            # dependency on  http://code.google.com/p/typogrify/
     #'debug_toolbar',
     'app_plugins',
     'simple.localsite',
