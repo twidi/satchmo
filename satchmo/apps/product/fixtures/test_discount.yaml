@@ -46,161 +46,6 @@
     value: upgrade}
   model: product.option
   pk: 11
-- fields:
-    active: true
-    allowedUses: null
-    amount: '10'
-    code: test10
-    description: Test Amount 10
-    endDate: 5000-01-01
-    shipping: 'NONE'
-    minOrder: null
-    numUses: null
-    percentage: null
-    startDate: 2007-12-15
-    valid_products: []
-    site: 1
-    allValid: true
-  model: product.discount
-  pk: 1
-- fields:
-    active: true
-    allowedUses: null
-    amount: null
-    code: test20
-    description: Test Percent 20
-    endDate: 5000-01-01
-    shipping: 'NONE'
-    minOrder: null
-    numUses: null
-    percentage: '20'
-    startDate: 2007-12-15
-    valid_products: []
-    site: 1
-    allValid: true
-  model: product.discount
-  pk: 2
-- fields:
-    active: true
-    allowedUses: null
-    amount: '10'
-    code: test10ship
-    description: Test Amount 10 w/ship
-    endDate: 5000-01-01
-    shipping: 'APPLY'
-    minOrder: null
-    numUses: null
-    percentage: null
-    startDate: 2007-12-15
-    valid_products: []
-    site: 1
-    allValid: true
-  model: product.discount
-  pk: 3
-- fields:
-    active: true
-    allowedUses: null
-    amount: null
-    code: test20ship
-    description: Test Percent 20 w/ship
-    endDate: 5000-01-01
-    shipping: 'APPLY'
-    minOrder: null
-    numUses: null
-    percentage: '20'
-    startDate: 2007-12-15
-    valid_products: []
-    site: 1
-    allValid: true
-  model: product.discount
-  pk: 4
-- fields:
-    active: true
-    allowedUses: null
-    amount: '10'
-    code: test10freeship
-    description: Test Amount 10 Free Ship
-    endDate: 5000-01-01
-    shipping: 'FREE'
-    minOrder: null
-    numUses: null
-    percentage: null
-    startDate: 2007-12-15
-    valid_products: []
-    site: 1
-    allValid: true
-  model: product.discount
-  pk: 5
-- fields:
-    active: true
-    allowedUses: null
-    amount: null
-    code: test20freeship
-    description: Test Percent 20 Free ship
-    endDate: 5000-01-01
-    shipping: 'FREE'
-    minOrder: null
-    numUses: null
-    percentage: '20'
-    startDate: 2007-12-15
-    valid_products: []
-    site: 1
-    allValid: true
-  model: product.discount
-  pk: 6
-- fields:
-    active: true
-    allowedUses: null
-    amount: null
-    code: test10-product
-    description: Test Percent 10 (Product)
-    endDate: 5000-01-01
-    shipping: 'NONE'
-    minOrder: null
-    numUses: null
-    percentage: '10'
-    startDate: 2007-12-15
-    valid_products: [15]
-    site: 1
-    allValid: false
-  model: product.discount
-  pk: 7
-- fields:
-    active: true
-    allowedUses: null
-    amount: null
-    automatic: true
-    code: test20-auto
-    description: Test Percent 20 (Auto)
-    endDate: 5000-01-01
-    shipping: 'NONE'
-    minOrder: null
-    numUses: null
-    percentage: '20'
-    startDate: 2007-12-15
-    valid_products: [15]
-    site: 1
-    allValid: false
-  model: product.discount
-  pk: 8
-- fields:
-    active: true
-    allowedUses: null
-    amount: null
-    automatic: true
-    code: test20-auto-all
-    description: Test Percent 20 (Auto) (All)
-    endDate: 5000-01-01
-    shipping: 'NONE'
-    minOrder: null
-    numUses: null
-    percentage: '20'
-    startDate: 2007-12-15
-    valid_products: []
-    site: 1
-    allValid: true
-  model: product.discount
-  pk: 9
 - fields: {description: Books, meta: null, name: Books, ordering: 0, parent: null,
     slug: book, site: 1}
   model: product.category
@@ -772,4 +617,159 @@
 - fields: {expires: null, price: '7.99', product: 4, quantity: '1'}
   model: product.price
   pk: 4
+- fields:
+    active: true
+    allowedUses: null
+    amount: '10'
+    code: test10
+    description: Test Amount 10
+    endDate: 5000-01-01
+    shipping: 'NONE'
+    minOrder: null
+    numUses: null
+    percentage: null
+    startDate: 2007-12-15
+    valid_products: []
+    site: 1
+    allValid: true
+  model: product.discount
+  pk: 1
+- fields:
+    active: true
+    allowedUses: null
+    amount: null
+    code: test20
+    description: Test Percent 20
+    endDate: 5000-01-01
+    shipping: 'NONE'
+    minOrder: null
+    numUses: null
+    percentage: '20'
+    startDate: 2007-12-15
+    valid_products: []
+    site: 1
+    allValid: true
+  model: product.discount
+  pk: 2
+- fields:
+    active: true
+    allowedUses: null
+    amount: '10'
+    code: test10ship
+    description: Test Amount 10 w/ship
+    endDate: 5000-01-01
+    shipping: 'APPLY'
+    minOrder: null
+    numUses: null
+    percentage: null
+    startDate: 2007-12-15
+    valid_products: []
+    site: 1
+    allValid: true
+  model: product.discount
+  pk: 3
+- fields:
+    active: true
+    allowedUses: null
+    amount: null
+    code: test20ship
+    description: Test Percent 20 w/ship
+    endDate: 5000-01-01
+    shipping: 'APPLY'
+    minOrder: null
+    numUses: null
+    percentage: '20'
+    startDate: 2007-12-15
+    valid_products: []
+    site: 1
+    allValid: true
+  model: product.discount
+  pk: 4
+- fields:
+    active: true
+    allowedUses: null
+    amount: '10'
+    code: test10freeship
+    description: Test Amount 10 Free Ship
+    endDate: 5000-01-01
+    shipping: 'FREE'
+    minOrder: null
+    numUses: null
+    percentage: null
+    startDate: 2007-12-15
+    valid_products: []
+    site: 1
+    allValid: true
+  model: product.discount
+  pk: 5
+- fields:
+    active: true
+    allowedUses: null
+    amount: null
+    code: test20freeship
+    description: Test Percent 20 Free ship
+    endDate: 5000-01-01
+    shipping: 'FREE'
+    minOrder: null
+    numUses: null
+    percentage: '20'
+    startDate: 2007-12-15
+    valid_products: []
+    site: 1
+    allValid: true
+  model: product.discount
+  pk: 6
+- fields:
+    active: true
+    allowedUses: null
+    amount: null
+    code: test10-product
+    description: Test Percent 10 (Product)
+    endDate: 5000-01-01
+    shipping: 'NONE'
+    minOrder: null
+    numUses: null
+    percentage: '10'
+    startDate: 2007-12-15
+    valid_products: [15]
+    site: 1
+    allValid: false
+  model: product.discount
+  pk: 7
+- fields:
+    active: true
+    allowedUses: null
+    amount: null
+    automatic: true
+    code: test20-auto
+    description: Test Percent 20 (Auto)
+    endDate: 5000-01-01
+    shipping: 'NONE'
+    minOrder: null
+    numUses: null
+    percentage: '20'
+    startDate: 2007-12-15
+    valid_products: [15]
+    site: 1
+    allValid: false
+  model: product.discount
+  pk: 8
+- fields:
+    active: true
+    allowedUses: null
+    amount: null
+    automatic: true
+    code: test20-auto-all
+    description: Test Percent 20 (Auto) (All)
+    endDate: 5000-01-01
+    shipping: 'NONE'
+    minOrder: null
+    numUses: null
+    percentage: '20'
+    startDate: 2007-12-15
+    valid_products: []
+    site: 1
+    allValid: true
+  model: product.discount
+  pk: 9
 
