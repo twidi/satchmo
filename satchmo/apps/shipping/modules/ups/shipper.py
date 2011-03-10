@@ -323,7 +323,7 @@ class Shipper(BaseShipper):
         else:
             connection = 'https://onlinetools.ups.com/ups.app/xml/TimeInTransit'
 
-        cachekey = cache_key("UPS-TIT", shipaddr.postal_code, pickup_date, price)
+        cachekey = cache_key("UPS-TIT", shipaddr.postal_code, pickup_date.strftime('%Y%m%d'), "%.2f" % price)
 
         try:
             ups = cache_get(cachekey)
