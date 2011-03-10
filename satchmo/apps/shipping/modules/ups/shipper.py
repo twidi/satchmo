@@ -279,6 +279,13 @@ class Shipper(BaseShipper):
         if pickup_date is None:
             pickup_date = datetime.datetime.now() + datetime.timedelta(days=1)
 
+        # UPS doesn't pick up on weekends
+        if pickup_date.day == 5:
+            pickup_date += datetime.timedelta(days=2)
+
+        if pickup_date.day == 6:
+            pickup_date += datetime.timedelta(days=1)
+
         if price is None:
             price = Decimal('10.0')
 
