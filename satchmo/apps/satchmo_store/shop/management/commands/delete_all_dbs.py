@@ -7,7 +7,7 @@ def module_to_dict(module, omittable=lambda k: k.startswith('_')):
     return dict([(k, repr(v)) for k, v in module.__dict__.items() if not omittable(k)])
 
 class Command(NoArgsCommand):
-    help = "Delete all databases! Be careful about using this!"
+    help = "Delete all data in the database! Be careful about using this!"
     
     def handle_noargs(self, **options):
         """Delete the old database."""
@@ -56,4 +56,4 @@ class Command(NoArgsCommand):
             for cmd in ['dropdb %s', 'createdb %s']:
                 os.system(cmd % params)
         else:
-            raise AssertionError("Unknown database engine %s" % engine)
+            raise AssertionError("Unsupported database engine %s by this command" % engine)
