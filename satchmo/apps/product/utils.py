@@ -233,7 +233,7 @@ def validation_simple(value, obj=None):
     Validates that at least one character has been entered.
     Not change is made to the value.
     """
-    if len(value) > 1:
+    if len(value) >= 1:
         return True, value
     else:
         return False, value
