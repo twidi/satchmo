@@ -1,4 +1,3 @@
-from django.db import transaction, DatabaseError
 from django.utils.translation import ugettext_lazy as _
 from livesettings import * 
 from tax.config import TAX_MODULE

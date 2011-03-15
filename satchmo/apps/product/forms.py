@@ -379,6 +379,8 @@ class ProductImportForm(forms.Form):
                 errors.append("Raw: %s" % raw)
                 transaction.rollback()
                 transaction.leave_transaction_management()
+            else:
+                transaction.leave_transaction_management()
 
         return results, errors
 
