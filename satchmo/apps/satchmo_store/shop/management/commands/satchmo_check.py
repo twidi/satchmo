@@ -90,11 +90,15 @@ class Command(NoArgsCommand):
             error_out("A CACHE_BACKEND must be configured.")
         # Try looking up a url to see if there's a misconfiguration there    
         try:
+            # The function urlresolvers.reverse has its own way of error reporting to screen and we have no access to it
             url = urlresolvers.reverse('satchmo_search')
             # Catch SystemExit, because if an error occurs, `urlresolvers` usually calls sys.exit() and other error messages would be lost.
         except (Exception, SystemExit), e:
             error_out("Unable to resolve urls. Received error - %s" % formaterror(e))
-        from l10n.l10n_settings import get_l10n_default_currency_symbol
+	try:
+	    from l10n.l10n_settings import get_l10n_default_currency_symbol
+	except:
+	    pass
         if not isinstance(get_l10n_default_currency_symbol(),types.UnicodeType):
             error_out("Your currency symbol should be a unicode string.")
         if 'satchmo_store.shop.SSLMiddleware.SSLRedirect' not in settings.MIDDLEWARE_CLASSES:
