@@ -98,18 +98,6 @@ def confirm_info(request):
     xchg_order_id = "%07dT%02d%02d" % (order.id, now.minute, now.second)
 
     amount = "%d" % (order.balance * 100,)    # in cents
-    signature_data = ''.join(
-            map(str, (
-                    amount,
-                    xchg_order_id,
-                    payment_module.MERCHANT_FUC.value,
-                    payment_module.MERCHANT_CURRENCY.value,
-                    signature_code,
-                    )
-               )
-            )
-
-    signature = sha1(signature_data).hexdigest()
 
     template = lookup_template(payment_module, 'shop/checkout/sermepa/confirm.html')
 
@@ -117,6 +105,32 @@ def confirm_info(request):
     url_ok = _resolve_local_url(payment_module, payment_module.MERCHANT_URL_OK)
     url_ko = _resolve_local_url(payment_module, payment_module.MERCHANT_URL_KO)
 
+    if payment_module.EXTENDED_SIGNATURE.value:
+        signature_data = ''.join(
+                map(str, (
+                        amount,
+                        xchg_order_id,
+                        payment_module.MERCHANT_FUC.value,
+                        payment_module.MERCHANT_CURRENCY.value,
+                        "0", #TransactionType
+                        url_callback,
+                        signature_code,
+                        )
+                   )
+                )
+    else:
+        signature_data = ''.join(
+                map(str, (
+                        amount,
+                        xchg_order_id,
+                        payment_module.MERCHANT_FUC.value,
+                        payment_module.MERCHANT_CURRENCY.value,
+                        signature_code,
+                        )
+                   )
+                )
+
+    signature = sha1(signature_data).hexdigest()
     ctx = {
         'live': live,
         'post_url': post_url,
