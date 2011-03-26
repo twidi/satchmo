@@ -99,8 +99,7 @@ def confirm_info(request):
                 price = item.product.productvariation.get_qty_price(item.quantity, True)
             else:
                 price = item.product.get_qty_price(item.quantity, True)
-
-            recurring = {'product':item.product, 'price':price,}
+            recurring = {'product':item.product, 'price':price.quantize(Decimal('.01'))}
             trial0 = recurring['product'].subscriptionproduct.get_trial_terms(0)
             if len(order_items) > 1 or trial0 is not None or recurring['price'] < order.balance:
                 recurring['trial1'] = {'price': order.balance,}
