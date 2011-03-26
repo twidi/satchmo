@@ -21,6 +21,8 @@ New Features
 - UPS module will display actual shipping times
 - New template tag product_featured_list
 - New config option to allow users to create their username instead of automatically generating
+- Satchmo check now does a more thorough job of checking your environment for issues
+- Allow users to create their own username instead of auto-generating one
 
 Translations
 ------------
@@ -58,6 +60,12 @@ Bug Fixes
 - Update Paypal IPN docs
 - Fix issue where inactive or out of stock products could be purchased if there was a time lag between cart addition and checkout
 - Cart template tag now allows show_discount
+- Several fixes to transaction management
+- Improve postgres syncdb support
+- UPS time in transit prevents weekend pickups
+- Payments weren't showing up correctly in admin
+- Multiple updates to the tests to make them more robust
+- Fix issue with persistent cart not working correctly
 
 Performance Improvements
 ------------------------
