@@ -101,13 +101,6 @@ config_register_list(
         default=False,
         ordering=105,
         ),
-#    BooleanValue(
-#        PAYMENT_GROUP,
-#        'EXTENDED_SIGNATURE',
-#        description=_("Extended signature calculation"),
-#        ordering=110,
-#        default=False)
-#    ),
     # terminal
     IntegerValue(
         PAYMENT_GROUP,
