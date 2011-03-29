@@ -24,6 +24,8 @@ from payment.views import payship
 from satchmo_store.shop.models import Order, Cart
 from satchmo_store.shop.satchmo_settings import get_satchmo_setting
 from satchmo_utils.dynamic import lookup_url, lookup_template
+from django.views.decorators.csrf import csrf_exempt  
+
 import logging
 try:
     from hashlib import sha1
@@ -150,6 +152,7 @@ def confirm_info(request):
     return render_to_response(template, ctx, context_instance=RequestContext(request))
 confirm_info = never_cache(confirm_info)
 
+@csrf_exempt
 def notify_callback(request):
     payment_module = config_get_group('PAYMENT_SERMEPA')
     if payment_module.LIVE.value:
