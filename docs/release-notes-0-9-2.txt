@@ -22,7 +22,6 @@ New Features
 - New template tag product_featured_list
 - New config option to allow users to create their username instead of automatically generating
 - Satchmo check now does a more thorough job of checking your environment for issues
-- Allow users to create their own username instead of auto-generating one
 
 Translations
 ------------
@@ -66,6 +65,7 @@ Bug Fixes
 - Payments weren't showing up correctly in admin
 - Multiple updates to the tests to make them more robust
 - Fix issue with persistent cart not working correctly
+- Updates and fixes to sermepa payment module
 
 Performance Improvements
 ------------------------
