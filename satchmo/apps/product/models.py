@@ -159,7 +159,8 @@ class Category(models.Model):
             qry = Product.objects.filter(category__in=cats)
 
         if variations:
-            return qry.filter(site=self.site, active=True, **kwargs)
+            slugs = qry.filter(site=self.site, active=True, **kwargs).values_list('slug',flat=True)
+            return Product.objects.filter(Q(productvariation__parent__product__slug__in = slugs)|Q(slug__in = slugs))
         else:
             return qry.filter(site=self.site, active=True, productvariation__parent__isnull=True, **kwargs)
 
