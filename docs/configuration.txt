@@ -115,7 +115,7 @@ number of places you might want to configure.
 
 2. In addition to the Satchmo specific settings, there are some Django settings you will want to make sure are properly set:
 
-    - Make sure that your ``DATABASE_ENGINE`` variable is also set correctly.
+    - Make sure that your ``DATABASES['default']['ENGINE']`` variable is also set correctly.
     - You should ensure that all of your paths are setup correctly.  Key ones to look at are:
 
         + ``MEDIA_ROOT`` (this is where images will be stored)
