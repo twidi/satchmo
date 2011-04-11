@@ -111,3 +111,18 @@ A south migration is included. To apply:
     
     python manage.py migrate product
     
+Support for Django 1.3
+++++++++++++++++++++++
+As of `this changeset FIXME`_, it is important to upgrade `django-caching-app-plugins <https://bitbucket.org/bkroeze/django-caching-app-plugins/>` (app_plugins) to version 0.1.2.
+
+For easier update of configuration files in an existing installation you can use the file `satchmo/projects/django13helper.py` to change it first temporarily.
+Copy this file to the project directory, where is `manage.py', and execute:
+
+    python manage.py satchmo_check --settings=django13helper
+
+If all is OK, you can try to run the server:
+
+    python manage.py runserver --settings=django13helper
+
+The helper everytime displays commands, which can be pasted to your configuration at end of `settings.py` to make the changes permanent.
+All changes are backward compatible with Django 1.2.

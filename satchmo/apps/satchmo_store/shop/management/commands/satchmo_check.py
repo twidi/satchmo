@@ -71,7 +71,7 @@ class Command(NoArgsCommand):
 
         verbose_check_install('django_caching_app_plugins', 'app_plugins', '0.1.2', '53a31761e344')
 
-        verbose_check_install('django_livesettings', 'livesettings', '1.4-8', 'e2769f9f60ec')
+        verbose_check_install('django_livesettings', 'livesettings', '1.4-8', '9a3f0ed0dca5')
 
         verbose_check_install('django_signals_ahoy', 'signals_ahoy', '0.1.0', '9ad8779d4c63')
 
