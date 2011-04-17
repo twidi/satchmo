@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.test import TestCase
 from satchmo_utils.numbers import round_decimal, trunc_decimal
+from satchmo_utils.unique_id import slugify
 
 class TestRoundedDecimals(TestCase):
 
@@ -61,3 +62,21 @@ class TestRoundedDecimals(TestCase):
 
         val = trunc_decimal("2.1223E+1", places=2)
         self.assertEqual(val, Decimal('21.23'))
+
+
+class TestSlugify(TestCase):
+    def testSlugify(self):
+        # 3x A acute + 2x S caron
+        val = slugify('&Aacute;&#193;&#xc1;&#352;&#x160;')
+        self.assertEqual(val, 'aaass')
+        # the same with disabled all "&" conversions (is not nice)
+        val = slugify('&Aacute;&#193;&#xc1;&#352;&#x160;', entities=False, decimal=False, hexadecimal=False)
+        self.assertEqual(val, 'aacute-193-xc1-352-x160')
+        # A acute + S caron
+        val = slugify(u'\xc1\u0160')
+        self.assertEqual(val, 'as')
+        # Greek alpha beta gamma can not be converted to ascii
+        val = slugify('&alpha;&beta;&gamma;')
+        self.assertEqual(val, '')
+        # arguments instance, slug_field and filter_dict can be better tested in 'product' tests
+
