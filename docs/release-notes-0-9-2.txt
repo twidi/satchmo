@@ -68,6 +68,7 @@ Bug Fixes
 - Updates and fixes to sermepa payment module
 - Fixes to syncdb
 - Fedex module API changes
+- Several fixes to handle unicode characters better
 
 Performance Improvements
 ------------------------
