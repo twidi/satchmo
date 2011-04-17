@@ -25,7 +25,7 @@ log = logging.getLogger("payment.modules.google.processor")
 class GoogleCart(object):
     def __init__(self, order, payment_module, live):
         self.settings = payment_module
-        self.cart_xml = self._cart_xml(order)
+        self.cart_xml = self._cart_xml(order).encode('utf-8')
         self.signature = self._signature(live)
 
     def _cart_xml(self, order):
