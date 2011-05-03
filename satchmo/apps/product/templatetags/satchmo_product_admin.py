@@ -8,27 +8,6 @@ from satchmo_utils.urlhelper import reverse_admin_url
 
 register = template.Library()
 
-def js_make_select_readonly(select):
-    #This is really just a mini-template
-    #select must be a jquery object
-    return """
-    select = %(select)s;
-    value = select.attr("value");
-    if (value){
-        text = "";
-        for (c in select.children()){
-          if (select.children()[c].value == value){
-            text = select.children()[c].innerHTML;
-            break;
-          }
-        }
-        select.before("<strong>" + text + "</strong><input type=\\"hidden\\" name=\\"" + select.attr("name") + "\\" value=\\"" + value + "\\" \>");
-        select.remove();
-    }
-    """ % {'select':select}
-
-register.simple_tag(js_make_select_readonly)
-
 def edit_subtypes(product):
     output = '<ul>'
     subtypes = product.get_subtypes()
