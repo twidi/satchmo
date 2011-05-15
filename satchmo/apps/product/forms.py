@@ -5,6 +5,7 @@ except ImportError:
 
 from django import forms
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.sites.models import Site
 from django.core import serializers, urlresolvers
 from django.core.management.base import CommandError
@@ -87,7 +88,7 @@ class InventoryForm(forms.Form):
 
             if opt=='qty':
                 if value != prod.items_in_stock:
-                    request.user.message_set.create(message='Updated %s stock to %s' % (key, value))
+                    messages.add_message(request, messages.INFO, 'Updated %s stock to %s' % (key, value))
                     log.debug('Saving new qty=%d for %s' % (value, key))
                     prod.items_in_stock = value
                     prod.save()
@@ -99,7 +100,7 @@ class InventoryForm(forms.Form):
                     full_price = prod.unit_price
 
                 if value != full_price:
-                    request.user.message_set.create(message='Updated %s unit price to %s' % (key, value))
+                    messages.add_message(request, messages.INFO, 'Updated %s unit price to %s' % (key, value))
                     log.debug('Saving new price %s for %s' % (value, key))
                     try:
                         price = Price.objects.get(product=prod, quantity='1')
@@ -114,7 +115,7 @@ class InventoryForm(forms.Form):
                         note = "Activated %s"
                     else:
                         note = "Deactivated %s"
-                    request.user.message_set.create(message=note % (key))
+                    messages.add_message(request, messages.INFO, note % (key))
 
                     prod.active = value
                     prod.save()
@@ -125,7 +126,7 @@ class InventoryForm(forms.Form):
                         note = "%s is now featured"
                     else:
                         note = "%s is no longer featured"
-                    request.user.message_set.create(message=note % (key))
+                    messages.add_message(request, messages.INFO, note % (key))
 
                     prod.featured = value
                     prod.save()
@@ -512,14 +513,14 @@ class VariationManagerForm(forms.Form):
             sku=skuval,
             slug=slugval)
         log.info('Updated variation %s', v)
-        request.user.message_set.create(message='Created %s' % v)
+        messages.add_message(request, messages.INFO, 'Created %s' % v)
         return v
 
     def _delete_variation(self, opts, request):
         variation = self.product.configurableproduct.get_product_from_options(opts)
         if variation:
             log.info("Deleting variation for [%s] %s", self.product.slug, opts)
-            request.user.message_set.create(message='Deleted %s' % variation)
+            messages.add_message(request, messages.INFO, 'Deleted %s' % variation)
             variation.delete()
 
 def _get_optiondict():
