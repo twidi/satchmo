@@ -27,7 +27,7 @@ msgstr "Activer le module de taxation"
 #: config.py:11
 msgid "Select a module, save and reload to set any module-specific settings."
 msgstr ""
-"Sélectionnez un module, sauvez et recharger pour activer les paramètres "
+"Sélectionnez un module, sauvez et rechargez pour activer les paramètres "
 "spécifiques à ce module."
 
 #: config.py:13
@@ -45,19 +45,19 @@ msgstr ""
 
 #: config.py:26
 msgid "New products are automatically made taxable"
-msgstr ""
+msgstr "Les nouveaux produits sont automatiquement taxables"
 
 #: config.py:27
 msgid "Whether newly created products should be taxable by default."
-msgstr ""
+msgstr "Indique si chaque nouveau produit ajouté est taxable par défaut."
 
 #: config.py:34
 msgid "Should tax be calculated based on shipping or billing address?"
-msgstr ""
+msgstr "Les taxes doivent-elles êtres calculées à partir de l'adresse de livraison ou de facturation ?"
 
 #: config.py:35
 msgid "This will only be used if tax is calculated based on an address."
-msgstr ""
+msgstr "Cela ne sera utilisé que si les taxes sont calculées à partir d'une adresse."
 
 #: modules/area/admin.py:14
 msgid "You must choose a zone or a country."
@@ -69,7 +69,7 @@ msgstr "Par pays/zone"
 
 #: modules/area/config.py:12 modules/percent/config.py:19
 msgid "Tax Shipping?"
-msgstr "Frais de port taxés?"
+msgstr "Frais de port taxés ?"
 
 #: modules/area/config.py:21 modules/us_sst/config.py:21
 msgid "TaxClass for shipping"
@@ -138,9 +138,8 @@ msgid "Tax Shipping in ANY jurisdiction?"
 msgstr ""
 
 #: modules/us_sst/models.py:62
-#, fuzzy
 msgid "Taxable?"
-msgstr "Taux de taxe"
+msgstr "Taxable ?"
 
 #: modules/us_sst/models.py:63
 msgid "Use Intrastate rate instead of Interstate?"
@@ -151,12 +150,10 @@ msgid "Use food/drug rate instead of general?"
 msgstr ""
 
 #: modules/us_sst/models.py:86
-#, fuzzy
 msgid "Taxable Class"
 msgstr "Type de taxe"
 
 #: modules/us_sst/models.py:87
-#, fuzzy
 msgid "Taxable Classes"
 msgstr "Types de taxe"
 
@@ -453,14 +450,12 @@ msgid "FIPS Special 20 type"
 msgstr ""
 
 #: modules/us_sst/models.py:390
-#, fuzzy
 msgid "Tax Boundry"
-msgstr "Pays de taxation"
+msgstr ""
 
 #: modules/us_sst/models.py:391
-#, fuzzy
 msgid "Tax Boundries"
-msgstr "Zone de taxation"
+msgstr ""
 
 #~ msgid "Description"
 #~ msgstr "Description"
