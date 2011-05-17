@@ -55,4 +55,4 @@ msgstr "Veuillez vous authentifier pour donner votre avis sur ce produit."
 
 #: templates/productratings/plugins/sidebar_links.html:3
 msgid "Most Popular"
-msgstr ""
+msgstr "Le plus populaire"
