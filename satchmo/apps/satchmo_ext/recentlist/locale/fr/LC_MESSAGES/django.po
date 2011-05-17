@@ -18,7 +18,7 @@ msgstr ""
 
 #: config.py:7
 msgid "Maximum recent items"
-msgstr "Nombre maxi d'articles récents"
+msgstr "Nombre maximum d'articles récents"
 
 #: config.py:8
 msgid "The maximum number of items show in the recent box."
