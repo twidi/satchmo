@@ -17,32 +17,31 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: admin.py:15 admin.py:24
-#, fuzzy
 msgid "1 country was"
-msgstr "Nom du pays"
+msgstr "Un pays a été"
 
 #: admin.py:17 admin.py:26
-#, fuzzy, python-format
+#, python-format
 msgid "%s countries were"
-msgstr "Pays"
+msgstr "%s pays ont été"
 
 #: admin.py:18
 #, python-format
 msgid "%s successfully marked as active"
-msgstr ""
+msgstr "%s correctement marqué comme actif(s)"
 
 #: admin.py:19
 msgid "Mark selected countries as active"
-msgstr ""
+msgstr "Marquer les pays sélectionnés comme actifs"
 
 #: admin.py:27
 #, python-format
 msgid "%s successfully marked as inactive"
-msgstr ""
+msgstr "%s correctement marqué comme inactif(s)"
 
 #: admin.py:28
 msgid "Mark selected countries as inactive"
-msgstr ""
+msgstr "Marquer les pays sélectionnés comme inactifs"
 
 #: models.py:6
 msgid "Africa"
@@ -126,7 +125,7 @@ msgstr "Emirat"
 
 #: models.py:29
 msgid "Governorate"
-msgstr "Gouvernemental"
+msgstr "Governorat"
 
 #: models.py:30
 msgid "Island council"
@@ -174,7 +173,7 @@ msgstr "Sheading"
 
 #: models.py:41
 msgid "State"
-msgstr "Département/Province"
+msgstr "État/Département/Région"
 
 #: models.py:42
 msgid "Subdivision"
@@ -206,11 +205,11 @@ msgstr "ISO alpha-3"
 
 #: models.py:57
 msgid "ISO numeric"
-msgstr "ISO numeric"
+msgstr "Code ISO numérique"
 
 #: models.py:58
 msgid "Country is active"
-msgstr "pays actif"
+msgstr "Pays actif"
 
 #: models.py:59
 msgid "Continent"
@@ -246,20 +245,20 @@ msgstr "Zones administratives"
 
 #: templates/l10n/_language_selection_form.html:5
 msgid "Change language"
-msgstr ""
+msgstr "Changer de langue"
 
 #: templates/l10n/_language_selection_form.html:11
 msgid "Change"
-msgstr ""
+msgstr "Modifier"
 
 #: validators/aupostcode.py:13
 msgid "Invalid Australian postal code"
-msgstr ""
+msgstr "Code postal australien invalide"
 
 #: validators/capostcode.py:18
 msgid "Invalid postal code for Canada"
-msgstr ""
+msgstr "Code postal canadien invalide"
 
 #: validators/uspostcode.py:10
 msgid "Invalid ZIP code"
-msgstr ""
+msgstr "Code postal invalide"
