@@ -42,7 +42,7 @@ msgstr "Nom"
 
 #: forms.py:60
 msgid "Newsletter"
-msgstr "Lettre d'informations"
+msgstr "Lettre d'information"
 
 #: forms.py:69
 msgid "The two passwords do not match."

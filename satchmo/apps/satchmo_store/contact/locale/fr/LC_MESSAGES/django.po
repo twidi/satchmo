@@ -186,7 +186,7 @@ msgstr "Les pays de livraison et de facturation diffèrent"
 
 #: forms.py:392 templates/contact/update_form.html:73
 msgid "Newsletter"
-msgstr "Lettre d'informations"
+msgstr "Lettre d'information"
 
 #: models.py:19 models.py:27 models.py:38 models.py:45
 msgid "Key"
@@ -566,7 +566,7 @@ msgstr "Date de naissance :"
 
 #: templates/contact/view_profile.html:25
 msgid "Newsletter:"
-msgstr "Lettre d'informations :"
+msgstr "Lettre d'information :"
 
 #: templates/contact/view_profile.html:25
 msgid "Yes"
