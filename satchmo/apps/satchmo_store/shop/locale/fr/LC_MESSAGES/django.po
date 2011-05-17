@@ -58,12 +58,12 @@ msgstr "Adresse du logo de la boutique"
 
 #: config.py:36
 msgid "State required?"
-msgstr "Demandé l'état/région/province ?"
+msgstr "Demandé l'état/département/région ?"
 
 #: config.py:37
 msgid ""
 "Require a state during registration/checkout for countries that have states?"
-msgstr "Rend obligatoire le choix de l'état/région/province pour les pays qui en ont"
+msgstr "Rend obligatoire le choix de l'état/département/région pour les pays qui en ont"
 
 #: config.py:43
 msgid "Show Site Field?"
@@ -1554,7 +1554,7 @@ msgstr "La commande demandée n'existe pas ou ne vous est pas accessible."
 #~ msgstr "Vous devez au moins remplir les champs suivis d'un *"
 
 #~ msgid "Basic Information"
-#~ msgstr "Informations de base"
+#~ msgstr "Informations principales"
 
 #~ msgid "Phone number"
 #~ msgstr "Numéro de téléphone"

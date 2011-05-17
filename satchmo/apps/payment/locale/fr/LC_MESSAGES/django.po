@@ -1529,7 +1529,7 @@ msgstr "Vous devez au moins remplir les champs suivis d'un *"
 
 #: templates/shop/checkout/form.html:62
 msgid "Basic Information"
-msgstr "Informations de base"
+msgstr "Informations principales"
 
 #: templates/shop/checkout/form.html:63
 msgid "Email address"
