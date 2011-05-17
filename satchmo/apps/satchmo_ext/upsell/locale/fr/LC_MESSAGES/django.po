@@ -34,7 +34,7 @@ msgstr "Case à cocher pour la quantité, cochée par défaut"
 
 #: models.py:28
 msgid "Form with 0 quantity"
-msgstr "Document avec quantité nulle"
+msgstr "Formulaire avec quantité nulle"
 
 #: models.py:33
 msgid "Target Product"
@@ -43,7 +43,7 @@ msgstr "Produit cible"
 #: models.py:35
 msgid "The products for which you want to show this goal product as an Upsell."
 msgstr ""
-"Les produits pour lesquels vous voulez afficher le produit visé comme upsell"
+"Les produits pour lesquels vous voulez afficher le produit visé comme vente liée"
 
 #: models.py:37
 msgid "Goal Product"
@@ -55,7 +55,7 @@ msgstr "Date de création"
 
 #: models.py:42
 msgid "Upsell Style"
-msgstr "Style Upsell"
+msgstr "Style de vente liée"
 
 #: models.py:45
 msgid "Notes"
@@ -76,7 +76,7 @@ msgstr "Description"
 #: views.py:65
 #, python-format
 msgid "'%(product)s' couldn't be added to the cart. %(details)s"
-msgstr ""
+msgstr "Le produit '%(product)s' ne peut être ajouté au panier. %(details)s"
 
 #: templates/upsell/product_upsell.html:15
 msgid "Add"
