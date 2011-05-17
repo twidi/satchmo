@@ -1,22 +1,22 @@
 #: admin.py:11 models.py:102
 msgid "Tiered Price"
-msgstr ""
+msgstr "Prix de palier"
 
 #: admin.py:12 models.py:103
 msgid "Tiered Prices"
-msgstr ""
+msgstr "Prix des paliers"
 
 #: models.py:43
 msgid "The user group that will receive the discount"
-msgstr ""
+msgstr "Le groupe d'utilisateur bénéficiant de cette réduction"
 
 #: models.py:44
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: models.py:45
 msgid "Discount Percent"
-msgstr ""
+msgstr "Pourcentage de réduction"
 
 #: models.py:47
 msgid ""
@@ -24,24 +24,29 @@ msgid ""
 "Tiered Price exists for that product.  Leave as 0 if you don't want any "
 "automatic discount in that case."
 msgstr ""
+"C'est la réduction qui sera appliquée à tout les produits si aucun palier de "
+"prix n'existe pour ce produit. Indiquez 0 si vous ne souhaitez aucune "
+"réduction dans ce cas."
 
 #: models.py:72
 msgid "Price"
-msgstr ""
+msgstr "Prix"
 
 #: models.py:73
 msgid "Discount Quantity"
-msgstr ""
+msgstr "Quantité minimum"
 
 #: models.py:73
 msgid "Use this price only for this quantity or higher"
 msgstr ""
+"Utiliser ce prix uniquement si la commande inclus au moins cette "
+"quantité de produits"
 
 #: models.py:74
 msgid "Expires"
-msgstr ""
+msgstr "Expire"
 
 #: models.py:150
 #, python-format
 msgid "Tiered Pricing for %(tier)s"
-msgstr ""
+msgstr "Prix par palier pour %(tier)s"
