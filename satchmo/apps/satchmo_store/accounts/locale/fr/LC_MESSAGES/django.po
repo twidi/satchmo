@@ -18,19 +18,19 @@ msgstr ""
 
 #: forms.py:32
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: forms.py:33
 msgid "Email address"
-msgstr "Adresse de messagerie "
+msgstr "Email"
 
 #: forms.py:35
 msgid "Password (again)"
-msgstr "Répétez le mdp"
+msgstr "Mot de passe (bis)"
 
 #: forms.py:37
 msgid "Password"
-msgstr "Mot de passe "
+msgstr "Mot de passe"
 
 #: forms.py:39
 msgid "First name"
@@ -38,7 +38,7 @@ msgstr "Prénom"
 
 #: forms.py:41
 msgid "Last name"
-msgstr "Nom de famille"
+msgstr "Nom"
 
 #: forms.py:60
 msgid "Newsletter"
@@ -46,11 +46,11 @@ msgstr "Lettre d'informations"
 
 #: forms.py:69
 msgid "The two passwords do not match."
-msgstr "Les 2 entrées diffèrent"
+msgstr "Les 2 mots de passe diffèrent"
 
 #: forms.py:80
 msgid "That email address is already in use."
-msgstr "Cette adresse Email est déjà utilisée"
+msgstr "Cette adresse email est déjà utilisée"
 
 #: mail.py:24
 #, python-format
