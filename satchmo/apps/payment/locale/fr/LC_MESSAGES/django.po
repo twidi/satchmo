@@ -33,11 +33,13 @@ msgstr ""
 
 #: config.py:26
 msgid "Allow URL Access to Cron for subscription rebills"
-msgstr "Permettre l'accès à l'URL Cron pour renouvellement de souscription"
+msgstr "Permettre l'accès à l'URL Cron pour renouvellement d'abonnements"
 
 #: config.py:27
 msgid "Do you want to allow remote url calls for subscription billing?"
-msgstr "Voulez-vous permettre l'appel d'URL externe pour les souscriptions?"
+msgstr ""
+"Voulez-vous permettre l'appel d'URL externe pour la facturation des "
+"abonnements ?"
 
 #: config.py:34 modules/authorizenet/config.py:40
 #: modules/autosuccess/config.py:11 modules/cod/config.py:19
@@ -55,19 +57,20 @@ msgid ""
 "off to force all payments into test mode."
 msgstr ""
 "Décoché si vous voulez rester en mode Test. Force tous les paiements en mode "
-"Test"
+"Test."
 
 #: config.py:42
 msgid "Email owner?"
-msgstr "Envoyer un email au propriétaire ?"
+msgstr "Envoyer un email à la boutique ?"
 
 #: config.py:43
 msgid "True if you want to email the owner on order"
 msgstr ""
-"Coché si vous souhaitez envoyer un email au propriétaire lors d'une commande"
+"Coché si vous souhaitez envoyer un email au contact de la boutique lors d'une "
+"commande"
 
 #: config.py:50
-msgid "Extra order emails?"
+msgid "Extra order emails ?"
 msgstr "Autres adresses email pour une commande"
 
 #: config.py:52
@@ -75,12 +78,12 @@ msgid ""
 "Put all email addresses you want to email in addition to the owner when an "
 "order is placed."
 msgstr ""
-"Ajoutez toutes les adresses email souhaitées en plus de celle du "
-"propriétaire lorsqu'une commande est placée."
+"Ajoutez toutes les adresses email à contacter en plus de celle du "
+"contact de la boutique lors d'une commande."
 
 #: config.py:60 modules/dummy/config.py:64
 msgid "Early AUTH"
-msgstr ""
+msgstr "Authentification au plus tôt"
 
 #: config.py:61
 msgid ""
@@ -90,10 +93,15 @@ msgid ""
 "only supported for payment modules that can do Authorizations.  It will be "
 "silently ignored for any other processors."
 msgstr ""
+"Si possible, authentifie la carte sur la page de saisie de la carte. Cela "
+"cause un débit de 0.01$ suivi immétidatement d'un recrédit, permettant aux "
+"erreurs liées à la carte d'apparaître directement sur cette page. Notez que "
+"cela n'est supporté que par les modules de paiement permettant l'"
+"authentification, et sera ignoré en silence par les autres modules"
 
 #: config.py:66
 msgid "Country match required?"
-msgstr "Correspondance de pays requise?"
+msgstr "Correspondance de pays requise ?"
 
 #: config.py:67
 msgid ""
@@ -113,14 +121,14 @@ msgid ""
 "    It does not set SSL for individual modules. \n"
 "    You must enable SSL for each payment module individually."
 msgstr ""
-"Ceci active pour les pages génériques comme la saisie d'information du "
+"Ceci active le ssl pour les pages génériques comme la saisie d'information du "
 "contact.\n"
 "Cà n'active pas le SSL pour les modules individuels. \n"
 "Vous devez activer le SSL pour chaque module de paiement individuellement. "
 
 #: config.py:80
 msgid "Minimum Order"
-msgstr "Valeur minimum de la commande"
+msgstr "Montannt minimum de commande"
 
 #: config.py:81
 msgid "The minimum cart total before checkout is allowed."
@@ -161,7 +169,7 @@ msgstr "Si décochée, aucun code de réduction ne sera demandé aux clients."
 
 #: forms.py:103
 msgid "Discount"
-msgstr "réduction"
+msgstr "Réduction"
 
 #: forms.py:156
 msgid "New price"
@@ -169,7 +177,7 @@ msgstr "Nouveau prix"
 
 #: forms.py:157
 msgid "Shipping adjustment"
-msgstr "Ajustement de la livraison"
+msgstr "Ajustement des frais de livraison"
 
 #: forms.py:158 modules/giftcertificate/models.py:102
 #: modules/purchaseorder/models.py:14
@@ -180,7 +188,7 @@ msgstr "Notes"
 #: forms.py:174 templates/shop/checkout/balance_remaining.html:23
 #: templates/shop/checkout/form.html:58
 msgid "Payment method"
-msgstr "Méthode de paiement"
+msgstr "Moyen de paiement"
 
 #: forms.py:249
 msgid "This field is required"
@@ -188,7 +196,7 @@ msgstr "Ce champ est requis"
 
 #: forms.py:252
 msgid "Selected payment method requires this field to be filled"
-msgstr "La méthode de paiement choisie nécessite que ce champ soit rempli"
+msgstr "Le moyen de paiement choisi nécessite que ce champ soit rempli"
 
 #: forms.py:274
 msgid "Invalid discount code."
@@ -208,7 +216,7 @@ msgstr "Code CCV invalide."
 
 #: listeners.py:19
 msgid "terms and conditions"
-msgstr ""
+msgstr "conditions générales"
 
 #: listeners.py:21
 #, python-format
@@ -225,7 +233,7 @@ msgstr "Actif"
 
 #: models.py:31
 msgid "Should this be displayed as an option for the user?"
-msgstr "Ce mode de paiement doit-il être proposé à l'utilisateur ?"
+msgstr "Ce moyen de paiement doit-il être proposé à l'utilisateur ?"
 
 #: models.py:32
 msgid "Option Name"
@@ -249,11 +257,11 @@ msgstr "Options de paiement"
 
 #: models.py:48
 msgid "Credit Card Type"
-msgstr "Type de carte de crédit"
+msgstr "Type de carte"
 
 #: models.py:49
 msgid "CC Number (Last 4 digits)"
-msgstr "Numéro de CB (4 derniers chiffres)"
+msgstr "Numéro de carte (4 derniers chiffres)"
 
 #: models.py:51
 msgid "Encrypted Credit Card"
@@ -354,7 +362,7 @@ msgid ""
 "True if you want to submit to the live url using a test flag, which won't be "
 "accepted."
 msgstr ""
-"True si vous voulez soumettre à l'url en ligne en utilisant un flag de test, "
+"Coché si vous voulez soumettre à l'url en ligne en utilisant un flag de test, "
 "ce qui ne sera pas accepté"
 
 #: modules/authorizenet/config.py:52 modules/autosuccess/config.py:17
@@ -407,15 +415,15 @@ msgstr "L'url de base pour construire les motifs d'url utilisés dans ce module"
 #: modules/dummy/config.py:48 modules/protx/config.py:71
 #: modules/trustcommerce/config.py:63
 msgid "Available credit cards"
-msgstr "Cartes de crédit disponibles"
+msgstr "Cartes de paiement disponibles"
 
 #: modules/authorizenet/config.py:85
 msgid "Your authorize.net transaction login"
-msgstr "Votre login pour transaction authorize.net"
+msgstr "Votre login de transaction authorize.net"
 
 #: modules/authorizenet/config.py:90
 msgid "Your authorize.net transaction key"
-msgstr "Votre clé pour transaction authorize.net"
+msgstr "Votre clé de transaction authorize.net"
 
 #: modules/authorizenet/config.py:95 modules/dummy/config.py:58
 msgid "Capture Payment immediately?"
@@ -426,8 +434,8 @@ msgid ""
 "IMPORTANT: If false, a capture attempt will be made when the order is marked "
 "as shipped.\""
 msgstr ""
-"IMPORTANT: Si décoché, une tentative de capture sera effectuée quand la "
-"commande sera marquée comme livrée.\""
+"IMPORTANT: Si décoché, une tentative d'encaissement ne sera effectuée que "
+"quand la commande sera marquée comme livrée.\""
 
 #: modules/authorizenet/config.py:101 modules/autosuccess/config.py:40
 #: modules/cod/config.py:49 modules/cybersource/config.py:88
@@ -527,7 +535,7 @@ msgstr "Soumettre pour Test à WDSL URL"
 #: modules/cybersource/config.py:57 modules/google/config.py:21
 #: modules/paypal/config.py:12 modules/protx/config.py:99
 msgid "Currency Code"
-msgstr "Code de la devise"
+msgstr "Code devise"
 
 #: modules/cybersource/config.py:58
 msgid "Currency code for Cybersource transactions."
@@ -551,7 +559,7 @@ msgid ""
 "release, allowing errors with the card to show on the card entry page."
 msgstr ""
 "L'authentification sur la page de saisie de la carte cause un débit "
-"de 0.1$ suivi immétidatement d'un recrédit, permettant aux erreurs "
+"de 0.01$ suivi immétidatement d'un recrédit, permettant aux erreurs "
 "liées à la carte d'apparaître directement sur cette page."
 
 #: modules/dummy/processor.py:36
@@ -582,8 +590,8 @@ msgid ""
 "The characters allowable in randomly-generated certficate codes.  No vowels "
 "means no unfortunate words."
 msgstr ""
-"Les caractères autorisés dans les numéros générés aléatoirement. Pas de "
-"voyelle implique des mots compliqués à retenir."
+"Les caractères autorisés dans les numéros de bons générés aléatoirement. Pas "
+"de voyelle implique des mots compliqués à deviner."
 
 #: modules/giftcertificate/config.py:31
 msgid "Code format"
@@ -863,14 +871,14 @@ msgstr "Paramètres du module de validation Google"
 
 #: modules/google/config.py:15
 msgid "XML Template"
-msgstr "Canevas XML"
+msgstr "Template XML"
 
 #: modules/google/config.py:16
 msgid ""
 "The XML template to use when submitting to Google. Probably you should not "
 "change this."
 msgstr ""
-"Le canevas XML à utiliser pour Google. Vous ne devrez probablement rien y "
+"Template XML à utiliser pour Google. Vous ne devrez probablement rien y "
 "changer."
 
 #: modules/google/config.py:22
@@ -895,7 +903,7 @@ msgstr "Moyen"
 
 #: modules/google/config.py:36
 msgid "Large"
-msgstr "Large"
+msgstr "Grand"
 
 #: modules/google/config.py:41 modules/google/config.py:47
 #: modules/paypal/config.py:18 modules/paypal/config.py:24
@@ -929,7 +937,7 @@ msgstr "Clé de test vendeur"
 
 #: modules/google/notifications.py:48
 msgid "Received through Google Checkout."
-msgstr "Reçu bia Google Checkout."
+msgstr "Reçu via Google Checkout."
 
 #: modules/google/notifications.py:69
 msgid "Paid through Google Checkout."
@@ -985,7 +993,7 @@ msgid ""
 "can be a named url and defaults to the standard checkout success."
 msgstr ""
 "Où Paypal va renvoyer le client lorsque l'achat est terminé. Cà peut être "
-"une URL nommée et par défaut retourne à la page standard de réussite de "
+"une URL nommée. Par défaut retourne à la page standard de réussite de "
 "paiement."
 
 #: modules/paypal/views.py:48 modules/sermepa/views.py:69 views/confirm.py:211
@@ -994,11 +1002,11 @@ msgstr "Votre commande n'est plus valide."
 
 #: modules/paypal/views.py:142
 msgid "Paid through PayPal."
-msgstr "Payé via de Paypal"
+msgstr "Payé via de Paypal."
 
 #: modules/paypal/views.py:152
 msgid "---Comment via Paypal IPN---"
-msgstr "---Commentaire via IPN Paypal---"
+msgstr "---Commentaire via Paypal IPN---"
 
 #: modules/protx/config.py:6
 msgid "Prot/X Secure Payments"
@@ -1396,8 +1404,8 @@ msgstr ""
 
 #: templates/shop/checkout/base_confirm.html:25
 msgid "Please validate the following information, then submit your order."
-msgstr "Merci de vérifier les informations suivantes, puis validez votre "
-"commande."
+msgstr ""
+"Merci de vérifier les informations suivantes, puis validez votre commande."
 
 #: templates/shop/checkout/base_confirm.html:41
 #: templates/shop/checkout/google/confirm.html:17
@@ -1421,7 +1429,7 @@ msgstr ""
 msgid "Please correct the following error:"
 msgid_plural "Please correct the following errors:"
 msgstr[0] "Veuillez corriger l'erreur suivante :"
-msgstr[1] "Veuillez corriger les erreurs suivantes :"
+msgstr[1] "Veuillez corriger lemr erreurs suivantes :"
 
 #: templates/shop/checkout/base_pay_ship.html:39
 #: templates/shop/checkout/form.html:107
@@ -1451,9 +1459,8 @@ msgid ""
 "The following error was returned while trying to process your card.  Please "
 "correct and resubmit"
 msgstr ""
-"Les erreurs suivantes sont survenues en essayant de procéder à votre "
-"paiement. Merci d'apporter les corrections nécessaires et de valider à "
-"nouveau."
+"Les erreurs suivantes sont survenues lors du traitement de votre paiement. "
+"Merci d'apporter les corrections nécessaires et de valide nouveau."
 
 #: templates/shop/checkout/confirm.html:19
 #: templates/shop/checkout/protx/confirm.html:19
@@ -1564,7 +1571,7 @@ msgstr "Ville"
 #: templates/shop/checkout/form.html:91 templates/shop/checkout/form.html:94
 #: templates/shop/checkout/form.html:126 templates/shop/checkout/form.html:129
 msgid "State/Province"
-msgstr "État/Région"
+msgstr "État/Région/Province"
 
 #: templates/shop/checkout/form.html:98 templates/shop/checkout/form.html:133
 msgid "Zipcode/Postcode"
@@ -1641,7 +1648,7 @@ msgstr "Votre paiement sera effectué via PayPal."
 
 #: templates/shop/checkout/protx/pay_ship.html:23
 msgid "Card Holder"
-msgstr "Propriétaire de la carte"
+msgstr "Titulaire de la carte"
 
 #: templates/shop/checkout/protx/pay_ship.html:32
 msgid "Issue number"
@@ -1658,7 +1665,7 @@ msgstr "Cette commande sera débitée de votre compte pour un montant de %(order
 
 #: templates/shop/checkout/purchaseorder/pay_ship.html:9
 msgid "Purchase Order #"
-msgstr "Numéro de commande #"
+msgstr "Commande Purchase Order N°"
 
 #: templates/shop/checkout/sermepa/confirm.html:11
 msgid "Your payment will be processed through Sermepa."
@@ -1668,7 +1675,7 @@ msgstr "Votre paiement sera effectué via Sermepa."
 msgid ""
 "The orderitem you have requested doesn't exist, or you don't have access to "
 "it."
-msgstr "L'article demandé n'existe pas, ou vous n'y avez pas accès."
+msgstr "L'article demandé n'existe pas, ou ne vous est pas accessible ."
 
 #: views/balance.py:86
 msgid "No form found in request."
@@ -1734,7 +1741,7 @@ msgstr "Merci de choisir"
 #~ msgstr "type d'échec"
 
 #~ msgid "offenders"
-#~ msgstr "En cause"
+#~ msgstr "cause"
 
 #~ msgid "errortype"
 #~ msgstr "erreur type"
