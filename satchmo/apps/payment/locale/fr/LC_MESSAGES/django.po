@@ -567,15 +567,15 @@ msgstr "Mauvais numéro de carte - paiement refusé"
 #: modules/giftcertificate/templates/giftcertificate/balance.html:13
 #: modules/giftcertificate/templates/product/detail_giftcertificateproduct.html:9
 msgid "Gift Certificate"
-msgstr "Bons cadeaux"
+msgstr "Bon cadeau"
 
 #: modules/giftcertificate/config.py:9
 msgid "Gift Certificate Settings"
-msgstr "Préférences des bons cadeaux"
+msgstr "Paramètres des bons cadeaux"
 
 #: modules/giftcertificate/config.py:19
 msgid "Character Set"
-msgstr "Liste de caractères"
+msgstr "Jeu de caractères"
 
 #: modules/giftcertificate/config.py:21
 msgid ""
@@ -607,7 +607,7 @@ msgstr "Site"
 
 #: modules/giftcertificate/models.py:32 modules/purchaseorder/models.py:30
 msgid "Order"
-msgstr "Ordre"
+msgstr "Commande"
 
 #: modules/giftcertificate/models.py:33
 msgid "Certificate Code"
@@ -635,7 +635,7 @@ msgstr "Email"
 
 #: modules/giftcertificate/models.py:41
 msgid "Starting Balance"
-msgstr "Solde de départ"
+msgstr "Solde initial"
 
 #: modules/giftcertificate/models.py:97
 #: modules/giftcertificate/templates/giftcertificate/balance.html:6
@@ -652,7 +652,7 @@ msgstr "Montant utilisé"
 
 #: modules/giftcertificate/models.py:105
 msgid "Order Payment"
-msgstr ""
+msgstr "Paiement de commande"
 
 #: modules/giftcertificate/models.py:106
 msgid "Used by"
@@ -664,11 +664,11 @@ msgstr "Produit"
 
 #: modules/giftcertificate/models.py:161
 msgid "Gift certificate product"
-msgstr "Produit du bon cadeau"
+msgstr "Produit avecbon cadeau"
 
 #: modules/giftcertificate/models.py:162
 msgid "Gift certificate products"
-msgstr "Produits du bon cadeau"
+msgstr "Produits avec bons cadeaux"
 
 #: modules/giftcertificate/processor.py:30
 msgid "No balance to pay"
@@ -689,7 +689,7 @@ msgstr "Il reste un solde de %s après l'utilisation du bon cadeau"
 
 #: modules/giftcertificate/templates/giftcertificate/_order_summary.html:5
 msgid "Gift Certificate Codes"
-msgstr "Codes de bons-cadeaux"
+msgstr "Codes des bons cadeaux"
 
 #: modules/giftcertificate/templates/giftcertificate/_order_summary.html:10
 #, python-format
@@ -699,7 +699,7 @@ msgstr "Ã : %(recipient)s"
 #: modules/giftcertificate/templates/giftcertificate/_order_summary.html:15
 #, python-format
 msgid "Starting Balance: %(start_balance)s"
-msgstr "Solde de départ : %(start_balance)s "
+msgstr "Solde initial : %(start_balance)s "
 
 #: modules/giftcertificate/templates/giftcertificate/_order_summary.html:19
 #, python-format
@@ -730,11 +730,11 @@ msgstr "Accueil"
 
 #: modules/giftcertificate/templates/giftcertificate/balance.html:15
 msgid "Purchased on:"
-msgstr "Acheté sur :"
+msgstr "Acheté le :"
 
 #: modules/giftcertificate/templates/giftcertificate/balance.html:21
 msgid "Starting Balance:"
-msgstr "Solde de départ :"
+msgstr "Solde initial :"
 
 #: modules/giftcertificate/templates/giftcertificate/balance.html:22
 msgid "Current Balance:"
@@ -785,7 +785,7 @@ msgstr "Ajouter au panier"
 #: templates/shop/checkout/protx/confirm.html:10
 #: templates/shop/checkout/purchaseorder/confirm.html:8
 msgid "Checkout"
-msgstr "Validation"
+msgstr "Validation de la commande"
 
 #: modules/giftcertificate/templates/shop/checkout/confirm.html:14
 #: modules/giftcertificate/templates/shop/checkout/giftcertificate/confirm.html:14
@@ -826,12 +826,13 @@ msgid ""
 "to select another form of payment for the balance after you use this gift "
 "certificate."
 msgstr ""
-"S'il ne reste pas assez pour pauer la totatlité de votre commande, vous "
-"pourrez choisir un autre moyen de paiement une fois ce bon cadeau utilisé."
+"Si le bon cadeau ne suffit par pour couvrir la totalité de votre commande, "
+"vous pourrez choisir un autre moyen de paiement une fois ce bon cadeau "
+"utilisé."
 
 #: modules/giftcertificate/templates/shop/checkout/giftcertificate/confirm.html:6
 msgid "Please Note:"
-msgstr "Veuillez prendre note :"
+msgstr "Veuillez noter :"
 
 #: modules/giftcertificate/templates/shop/checkout/giftcertificate/confirm.html:19
 #, python-format
