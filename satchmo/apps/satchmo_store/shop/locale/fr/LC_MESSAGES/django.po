@@ -273,7 +273,7 @@ msgstr "Variation du prix l'article"
 
 #: models.py:511 models.py:1124
 msgid "Sort Order"
-msgstr "Ordre de tri"
+msgstr "Ordre d'affichage"
 
 #: models.py:512 models.py:1125
 msgid "The display order for this group."

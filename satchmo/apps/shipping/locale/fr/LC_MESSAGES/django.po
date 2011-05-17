@@ -307,7 +307,7 @@ msgstr "Clé"
 #: modules/productshipping/models.py:90 modules/tiered/models.py:92
 #: modules/tieredquantity/models.py:86 modules/tieredweight/models.py:114
 msgid "Ordering"
-msgstr "Ordre de tri"
+msgstr "Ordre d'affichage"
 
 #: modules/productshipping/models.py:91 modules/tiered/models.py:93
 #: modules/tieredquantity/models.py:87 modules/tieredweight/models.py:115

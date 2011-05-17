@@ -245,7 +245,7 @@ msgstr "Le nom de la classe comme défini dans payment.py"
 
 #: models.py:35
 msgid "Sort Order"
-msgstr "Ordre de tri"
+msgstr "Ordre d'affichage"
 
 #: models.py:38
 msgid "Payment Option"
@@ -300,7 +300,7 @@ msgstr "Cartes de paiement"
 #: modules/base.py:48 modules/base.py:80 modules/base.py:85
 #: modules/base.py:181
 msgid "Not Implemented"
-msgstr "Pas implémenté"
+msgstr "Non implémenté"
 
 #: modules/base.py:382 modules/autosuccess/processor.py:21
 #: modules/cod/processor.py:26 modules/dummy/processor.py:44
