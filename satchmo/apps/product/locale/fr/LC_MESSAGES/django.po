@@ -1580,6 +1580,9 @@ msgstr "Aucun fichier envoyé trouvé"
 msgid "The product you have requested is not a Configurable Product."
 msgstr "Le produit demandé n'est pas un produit configurable."
 
+msgid "Category Index"
+msgstr "Liste des catégories"
+
 #~ msgid "Not implemented."
 #~ msgstr "Non implémenté."
 

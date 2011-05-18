@@ -1313,6 +1313,15 @@ msgid ""
 "The order you have requested doesn't exist, or you don't have access to it."
 msgstr "La commande demandée n'existe pas ou ne vous est pas accessible."
 
+msgid "Category Index"
+msgstr "Liste des catégories"
+
+msgid "Quick Order"
+msgstr "Commande rapide"
+
+msgid "Qty"
+msgstr "Quantité"
+
 #~ msgid "Password"
 #~ msgstr "Mot de passe "
 
