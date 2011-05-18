@@ -1248,7 +1248,7 @@ msgstr "Note"
 msgid ""
 "This store requires a minimum order of %(value)s before you can check out."
 msgstr ""
-"Ce magasin requiert une commande d'au moins %(value)s avant de conclure la "
+"Cette boutique requiert une commande d'au moins %(value)s avant de conclure la "
 "commande."
 
 #: templates/product/product_discount_eligible.html:4
