@@ -409,7 +409,7 @@ msgstr "États d'une commande fournisseur"
 
 #: templates/contact/_addressblock.html:11
 msgid "Not set"
-msgstr "Non activé"
+msgstr "Non défini"
 
 #: templates/contact/login_signup.html:13
 #: templates/contact/login_signup_address.html:40
