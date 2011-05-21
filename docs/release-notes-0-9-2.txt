@@ -70,6 +70,7 @@ Bug Fixes
 - Fixes to syncdb
 - Fedex module API changes
 - Several fixes to handle unicode characters better
+- Replace some admin jquery scripts with simpler django readonly fields
 
 Performance Improvements
 ------------------------
