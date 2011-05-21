@@ -27,6 +27,7 @@ Translations
 ------------
 - Added Dutch translation
 - Added Czech translation
+- Updated French translation
 
 Bug Fixes
 ---------
@@ -76,6 +77,14 @@ Performance Improvements
 - Made a couple of view and template changes to reduce the number of SQL queries per page
 - Added db index on Price Lookup table
 
+Additional Packages
+-------------------
+We have also made several updates to satchmo's dependencies including:
+  - `livesettings <https://bitbucket.org/bkroeze/django-livesettings>`_ 
+  - `keyedcache <https://bitbucket.org/bkroeze/django-keyedcache>`_ 
+  - `django-caching-app-plugins <https://bitbucket.org/bkroeze/django-caching-app-plugins/>`_
+  
+You should upgrade these to the latest version when you upgrade your satchmo site.
 
 Migration Notes
 ---------------
@@ -116,4 +125,4 @@ A south migration is included. To apply:
     
 Support for Django 1.3
 ++++++++++++++++++++++
-When using Django 1.3, it is important to upgrade `django-caching-app-plugins <https://bitbucket.org/bkroeze/django-caching-app-plugins/>` (app_plugins) to version 0.1.2.
+As mentioned above, when using Django 1.3, it is important to upgrade `django-caching-app-plugins <https://bitbucket.org/bkroeze/django-caching-app-plugins/>`_ (app_plugins) to version 0.1.2.
