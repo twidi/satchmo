@@ -19,11 +19,11 @@ msgstr ""
 #: numbers.py:23
 #, python-format
 msgid "%(value)s is not a valid number"
-msgstr ""
+msgstr "%(value)s n'est pas un nombre valide"
 
 #: numbers.py:35
 msgid "Please enter a positive number"
-msgstr ""
+msgstr "Merci d'entrer un nombre positif"
 
 #: validators.py:5
 msgid "Please enter one and only one of those fields."
@@ -35,11 +35,11 @@ msgstr "Ces champs ne peuvent être identiques."
 
 #: views.py:103
 msgid "Card type does not match card number."
-msgstr ""
+msgstr "Le type de carte ne correspond pas au numéro."
 
 #: views.py:105
 msgid "Invalid credit card number."
-msgstr ""
+msgstr "Numéro de carte invalide."
 
 #: thumbnail/config.py:4
 msgid "Thumbnail Settings"
@@ -59,15 +59,15 @@ msgstr ""
 
 #: thumbnail/config.py:16
 msgid "Rename product images?"
-msgstr "Renommer les images du produit?"
+msgstr "Renommer les images du produit ?"
 
 #: thumbnail/config.py:17
 msgid "Automatically rename product images on upload?"
-msgstr "Renommer automatiquement les images de produit lors de l'upload?"
+msgstr "Renommer automatiquement les images de produit lors de l'upload ?"
 
 #: thumbnail/widgets.py:21
 msgid "Change:"
-msgstr "Modifier:"
+msgstr "Modifier :"
 
 #: thumbnail/templates/widget/file.html:3
 msgid "Currently"
