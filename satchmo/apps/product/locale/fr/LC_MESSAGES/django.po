@@ -1299,7 +1299,7 @@ msgid ""
 "during checkout when you enter the code \"%(code)s\" during our %(desc)s "
 "which ends on %(enddate)s.</p>\n"
 msgstr ""
-"<p>Certains produits de cette page peuvent faire l'objet d'une réductions de %"
+"<p>Certains produits de cette page peuvent faire l'objet d'une réduction de %"
 "(pct)s lors de la validation si vous entrez le code \"%(code)s\" pendant "
 "notre %(desc)s qui se termine le %(enddate)s.</p>\n"
 
