@@ -1,6 +1,6 @@
 from decimal import Decimal
 from livesettings import config_get_group
-from satchmo_store.shop.models import Order, OrderItem, OrderItemDetail
+from satchmo_store.shop.models import Order, OrderItem, OrderItemDetail, OrderCart
 from satchmo_store.shop.signals import satchmo_post_copy_item_to_order
 from shipping.utils import update_shipping
 import logging
@@ -125,30 +125,31 @@ def update_orderitems(new_order, cart, update=False):
     """Update the order with all cart items, first removing all items if this
     is an update.
     """
-    if update:
-        new_order.remove_all_items()
-    else:
-        # have to save first, or else we can't add orderitems
-        new_order.site = cart.site
-        new_order.save()
+    if not isinstance(cart, OrderCart):
+        if update:
+            new_order.remove_all_items()
+        else:
+            # have to save first, or else we can't add orderitems
+            new_order.site = cart.site
+            new_order.save()
 
-    # Add all the items in the cart to the order
-    for item in cart.cartitem_set.all():
-        new_order_item = OrderItem(order=new_order,
-            product=item.product,
-            quantity=item.quantity,
-            unit_price=item.unit_price,
-            line_item_price=item.line_total)
+        # Add all the items in the cart to the order
+        for item in cart.cartitem_set.all():
+            new_order_item = OrderItem(order=new_order,
+                product=item.product,
+                quantity=item.quantity,
+                unit_price=item.unit_price,
+                line_item_price=item.line_total)
 
-        update_orderitem_for_subscription(new_order_item, item)
-        update_orderitem_details(new_order_item, item)
+            update_orderitem_for_subscription(new_order_item, item)
+            update_orderitem_details(new_order_item, item)
 
-        # Send a signal after copying items
-        # External applications can copy their related objects using this
-        satchmo_post_copy_item_to_order.send(
-                cart,
-                cartitem=item,
-                order=new_order, orderitem=new_order_item
-                )
+            # Send a signal after copying items
+            # External applications can copy their related objects using this
+            satchmo_post_copy_item_to_order.send(
+                    cart,
+                    cartitem=item,
+                    order=new_order, orderitem=new_order_item
+                    )
 
     new_order.recalculate_total()
