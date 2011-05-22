@@ -46,11 +46,11 @@ msgstr "Lettre d'information"
 
 #: forms.py:69
 msgid "The two passwords do not match."
-msgstr "Les 2 mots de passe diffèrent"
+msgstr "Les 2 mots de passe diffèrent."
 
 #: forms.py:80
 msgid "That email address is already in use."
-msgstr "Cette adresse email est déjà utilisée"
+msgstr "Cette adresse email est déjà utilisée."
 
 #: mail.py:24
 #, python-format
