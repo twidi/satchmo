@@ -24,7 +24,7 @@
 <input type="hidden" name="return" value="{{ return_address }}" />
 {% if subscription %}
 <input type="hidden" name="cmd" value="_xclick-subscriptions">
-<input type="hidden" name="item_name" value="{{ subscription.product.name }}">
+<input type="hidden" name="item_name" value="{{ subscription.product.name|force_escape }}">
 <input type="hidden" name="item_number" value="{{ invoice }}">
 <input type="hidden" name="invoice" value="{{ invoice }}" />
 <input type="hidden" name="no_shipping" value="1">
@@ -62,7 +62,7 @@
 {% for item in order.orderitem_set.all %}{% spaceless %}
 {% if item.discount %}
   {% if item.line_total > item.discount %}
-    <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item}}" />
+    <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item.description|force_escape}}" />
     <input type="hidden" name="amount_{{forloop.counter}}" value="{{item.unit_price|truncate_decimal:2}}" />
     <input type="hidden" name="discount_amount_{{forloop.counter}}" value="{{item.discount|truncate_decimal:2}}" />
   {% else %}
@@ -76,7 +76,7 @@
   {% endif %}
 {% else %}
   {# no discount #}
-  <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item}}" />
+  <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item.description|force_escape}}" />
   <input type="hidden" name="amount_{{forloop.counter}}" value="{{item.unit_price|truncate_decimal:2}}" />
 {% endif %}
 {% endspaceless %}
