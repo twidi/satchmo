@@ -1527,7 +1527,7 @@ msgstr "Udstedelsesdato"
 #: templates/shop/checkout/purchaseorder/confirm.html:15
 #, python-format
 msgid "This order will be charged on your account for %(order_total)s."
-msgstr "Denne ordre debiteres din konto for %(ordre_total)s."
+msgstr "Denne ordre debiteres din konto for %(order_total)s."
 
 #: templates/shop/checkout/purchaseorder/pay_ship.html:9
 msgid "Purchase Order #"
