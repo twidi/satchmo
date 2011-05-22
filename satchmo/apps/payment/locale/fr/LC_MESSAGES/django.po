@@ -1414,7 +1414,7 @@ msgstr ""
 #: templates/shop/checkout/sermepa/confirm.html:17
 #: templates/shop/checkout/sermepa/confirm.html:42
 msgid "Purchase Items"
-msgstr "Valider la commande"
+msgstr "Procéder au paiement"
 
 #: templates/shop/checkout/base_pay_ship.html:18
 #: templates/shop/checkout/form.html:28
