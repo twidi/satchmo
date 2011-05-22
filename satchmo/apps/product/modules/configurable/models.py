@@ -419,9 +419,11 @@ class ProductVariation(models.Model):
 
         pvs = ProductVariation.objects.filter(parent=self.parent)
         pvs = pvs.exclude(product=self.product)
-        for pv in pvs:
-            if pv.unique_option_ids == self.unique_option_ids:
-                return # Don't allow duplicates
+        for option in self.options.all():
+            pvs = pvs.filter(options__option_group__id=option.option_group_id, 
+                options__value=option.value)
+        if pvs.count():
+            return # Don't allow duplicates
 
         if not self.product.name:
             # will force calculation of default name

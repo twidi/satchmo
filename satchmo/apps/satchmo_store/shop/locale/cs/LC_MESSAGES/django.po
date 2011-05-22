@@ -1054,7 +1054,7 @@ msgstr ""
 #: templates/shop/email/order_shipped.txt:3
 #, python-format
 msgid "Thank you for ordering with %(shop_name)s."
-msgstr "Děkujeme za Vaši Objednávku z (shop_name)s."
+msgstr "Děkujeme za Vaši Objednávku z %(shop_name)s."
 
 #: templates/shop/email/order_complete.html:8
 #: templates/shop/email/order_complete.txt:7
