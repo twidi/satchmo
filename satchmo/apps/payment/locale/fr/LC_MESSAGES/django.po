@@ -1311,7 +1311,7 @@ msgstr "Solde = %(balance)s "
 
 #: templates/payment/_order_payment_summary.html:15
 msgid "Pay remaining balance"
-msgstr "Solde restant dû"
+msgstr "Payer le solde restant dû"
 
 #: templates/payment/admin/charge_remaining_confirm.html:4
 msgid "Custom Charge"
@@ -1372,7 +1372,7 @@ msgstr "clicker ici</a> pour le réinitialiser."
 
 #: templates/shop/checkout/balance_remaining.html:12
 msgid "Order Balance"
-msgstr "Montant total"
+msgstr "Solde de commande"
 
 #: templates/shop/checkout/balance_remaining.html:17
 #, python-format
