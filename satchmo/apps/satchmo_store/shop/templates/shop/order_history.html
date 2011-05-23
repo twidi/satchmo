@@ -1,6 +1,7 @@
 {% extends "shop/base.html" %}
 {% load i18n %}
 {% load satchmo_currency %}
+{% load satchmo_checkout %}
 {% load satchmo_order normalize_decimal %}
 
 {% block navbar %}
@@ -30,7 +31,7 @@
                     <a href="{% url satchmo_order_tracking order.id %}">{{ order.id }}</a>
                 </td>
                 <td class="orderstatus">
-                    {{ order.status }}
+                    {{ order.status|status_label }}
                 </td>
                 <td class="orderdate">
                     {{ order.time_stamp|date:"F jS Y H:i" }}
