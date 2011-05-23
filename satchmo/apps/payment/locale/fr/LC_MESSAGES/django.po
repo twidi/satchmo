@@ -1002,7 +1002,7 @@ msgstr "Votre commande n'est plus valide."
 
 #: modules/paypal/views.py:142
 msgid "Paid through PayPal."
-msgstr "Payé via de Paypal."
+msgstr "Payé via Paypal."
 
 #: modules/paypal/views.py:152
 msgid "---Comment via Paypal IPN---"
