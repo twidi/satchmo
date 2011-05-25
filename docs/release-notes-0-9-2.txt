@@ -127,3 +127,10 @@ A south migration is included. To apply:
 Support for Django 1.3
 ++++++++++++++++++++++
 As mentioned above, when using Django 1.3, it is important to upgrade `django-caching-app-plugins <https://bitbucket.org/bkroeze/django-caching-app-plugins/>`_ (app_plugins) to version 0.1.2.
+
+Active Products
++++++++++++++++
+Previously, category.active_products() would not consistently return the correct product variations. In `rev 2168 <https://bitbucket.org/chris1610/satchmo/changeset/318f7eb41140>`_
+this was fixed but had the unintended side effect of returning all the product variations in the default templates. In order to maintain
+consistency, the default variation display value is now False. The only people that will notice the issue is those that customized
+the variation display in the category page.

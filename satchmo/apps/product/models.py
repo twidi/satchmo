@@ -151,7 +151,10 @@ class Category(models.Model):
 
     main_image = property(_get_mainImage)
 
-    def active_products(self, variations=True, include_children=False, **kwargs):
+    def active_products(self, variations=False, include_children=False, **kwargs):
+        """Variations determines whether or not product variations are included
+        in most templates we are not returning all variations, just the parent product.
+        """
         if not include_children:
             qry = self.product_set.all()
         else:
