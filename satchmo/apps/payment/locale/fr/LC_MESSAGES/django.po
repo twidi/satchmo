@@ -1701,6 +1701,12 @@ msgstr "Commande de renouvellement d'abonnement soumise avec succès"
 msgid "Please Select"
 msgstr "Merci de choisir"
 
+msgid "Remaining Balance for order #%(order_id)s"
+msgstr "Solde restant pour la commande N°%(order_id)s"
+
+msgid "Shipping for free items"
+msgstr "Frais de livraison pour produits gratuits"
+
 #~ msgid ""
 #~ "Select the payment modules you want to use with your shop.  \n"
 #~ "    If you are adding a new one, you should save and come back to this "
