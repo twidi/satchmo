@@ -41,11 +41,11 @@ class PricingTierManager(models.Manager):
 class PricingTier(models.Model):
     """A specific pricing tier, such as "trade customers"
     """
-    group = models.OneToOneField(Group, help_text=_('The user group that will receive the discount'))
-    title = models.CharField(_('Title'), max_length=50)
-    discount_percent = models.DecimalField(_("Discount Percent"), null=True, blank=True,
+    group = models.OneToOneField(Group, help_text=_(u'The user group that will receive the discount'))
+    title = models.CharField(_(u'Title'), max_length=50)
+    discount_percent = models.DecimalField(_(u"Discount Percent"), null=True, blank=True,
         max_digits=5, decimal_places=2,
-        help_text=_("This is the discount that will be applied to every product if no explicit Tiered Price exists for that product.  Leave as 0 if you don't want any automatic discount in that case."))
+        help_text=_(u"This is the discount that will be applied to every product if no explicit Tiered Price exists for that product.  Leave as 0 if you don't want any automatic discount in that case."))
 
     objects = PricingTierManager()
 
@@ -77,9 +77,9 @@ class TieredPrice(models.Model):
     """
     pricingtier = models.ForeignKey(PricingTier, related_name="tieredprices")
     product = models.ForeignKey(Product, related_name="tieredprices")
-    price = CurrencyField(_("Price"), max_digits=14, decimal_places=6, )
-    quantity = models.DecimalField(_("Discount Quantity"), max_digits=18, decimal_places=6,  default='1', help_text=_("Use this price only for this quantity or higher"))
-    expires = models.DateField(_("Expires"), null=True, blank=True)
+    price = CurrencyField(_(u"Price"), max_digits=14, decimal_places=6, )
+    quantity = models.DecimalField(_(u"Discount Quantity"), max_digits=18, decimal_places=6,  default='1', help_text=_(u"Use this price only for this quantity or higher"))
+    expires = models.DateField(_(u"Expires"), null=True, blank=True)
 
     objects = TieredPriceManager()
 
