@@ -1,4 +1,4 @@
-from django.template import Library
+from django.template import Library, RequestContext
 from django.conf import settings
 from satchmo_store.contact.models import Contact
 from livesettings import config_value
@@ -6,14 +6,14 @@ import sys
 
 register = Library()
 
-def show_tracker(secure=False):
+def show_tracker(context, secure=False):
     """
     Output the google tracker code.
     """
-    return({"GOOGLE_CODE": config_value('GOOGLE', 'ANALYTICS_CODE'),
-            "secure" : secure})
+    return RequestContext(context['request'],
+        {"GOOGLE_CODE": config_value('GOOGLE', 'ANALYTICS_CODE'), "secure" : secure})
 
-register.inclusion_tag("shop/google-analytics/tracker.html")(show_tracker)
+register.inclusion_tag("shop/google-analytics/tracker.html", takes_context=True)(show_tracker)
 
 def show_receipt(context):
     """

@@ -996,7 +996,7 @@ msgstr "Totalement débité"
 
 #: templates/shop/admin/_customorder_management.html:10
 msgid "Charge remaining amount"
-msgstr "Solde restant dû"
+msgstr "Facturer le solde restant dû"
 
 #: templates/shop/admin/_customorder_management.html:13
 msgid "Product Details"

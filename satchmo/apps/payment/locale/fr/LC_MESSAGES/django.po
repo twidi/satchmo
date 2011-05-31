@@ -1002,7 +1002,7 @@ msgstr "Votre commande n'est plus valide."
 
 #: modules/paypal/views.py:142
 msgid "Paid through PayPal."
-msgstr "Payé via de Paypal."
+msgstr "Payé via Paypal."
 
 #: modules/paypal/views.py:152
 msgid "---Comment via Paypal IPN---"
@@ -1311,7 +1311,7 @@ msgstr "Solde = %(balance)s "
 
 #: templates/payment/_order_payment_summary.html:15
 msgid "Pay remaining balance"
-msgstr "Solde restant dû"
+msgstr "Payer le solde restant dû"
 
 #: templates/payment/admin/charge_remaining_confirm.html:4
 msgid "Custom Charge"
@@ -1372,7 +1372,7 @@ msgstr "clicker ici</a> pour le réinitialiser."
 
 #: templates/shop/checkout/balance_remaining.html:12
 msgid "Order Balance"
-msgstr "Montant total"
+msgstr "Solde de commande"
 
 #: templates/shop/checkout/balance_remaining.html:17
 #, python-format
@@ -1414,7 +1414,7 @@ msgstr ""
 #: templates/shop/checkout/sermepa/confirm.html:17
 #: templates/shop/checkout/sermepa/confirm.html:42
 msgid "Purchase Items"
-msgstr "Valider la commande"
+msgstr "Procéder au paiement"
 
 #: templates/shop/checkout/base_pay_ship.html:18
 #: templates/shop/checkout/form.html:28
@@ -1700,6 +1700,12 @@ msgstr "Commande de renouvellement d'abonnement soumise avec succès"
 #: views/payship.py:23
 msgid "Please Select"
 msgstr "Merci de choisir"
+
+msgid "Remaining Balance for order #%(order_id)s"
+msgstr "Solde restant pour la commande N°%(order_id)s"
+
+msgid "Shipping for free items"
+msgstr "Frais de livraison pour produits gratuits"
 
 #~ msgid ""
 #~ "Select the payment modules you want to use with your shop.  \n"

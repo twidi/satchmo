@@ -24,7 +24,7 @@
 <input type="hidden" name="return" value="{{ return_address }}" />
 {% if subscription %}
 <input type="hidden" name="cmd" value="_xclick-subscriptions">
-<input type="hidden" name="item_name" value="{{ subscription.product.name }}">
+<input type="hidden" name="item_name" value="{{ subscription.product.name|force_escape }}">
 <input type="hidden" name="item_number" value="{{ invoice }}">
 <input type="hidden" name="invoice" value="{{ invoice }}" />
 <input type="hidden" name="no_shipping" value="1">
@@ -55,14 +55,14 @@
 <input type="hidden" name="no_shipping" value="1" />
 <input type="hidden" name="invoice" value="{{ invoice }}" />
 {% if order.partially_paid %}
-<input type="hidden" name="item_name_1" value="Remaining Balance for order {{ order.id }}" />
+<input type="hidden" name="item_name_1" value="{% blocktrans with order.id as order_id %}Remaining Balance for order {{ order_id }}{% endblocktrans %}" />
 <input type="hidden" name="amount_1" value="{{order.balance|truncate_decimal:2}}" />
 <input type="hidden" name="quantity_1" value="1" />
 {% else %}
 {% for item in order.orderitem_set.all %}{% spaceless %}
 {% if item.discount %}
   {% if item.line_total > item.discount %}
-    <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item}}" />
+    <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item.description|force_escape}}" />
     <input type="hidden" name="amount_{{forloop.counter}}" value="{{item.unit_price|truncate_decimal:2}}" />
     <input type="hidden" name="discount_amount_{{forloop.counter}}" value="{{item.discount|truncate_decimal:2}}" />
   {% else %}
@@ -70,13 +70,13 @@
     {# BUT, if this is the only thing in the cart, then we still need to put *something* #}
     {# in the cart, so lets do handling as a line item #}
     {% if order.discounted_sub_total <= 0 %}
-      <input type="hidden" name="item_name_{{forloop.counter}}" value="Shipping for free items" />
+      <input type="hidden" name="item_name_{{forloop.counter}}" value="{% trans "Shipping for free items" %}" />
       <input type="hidden" name="amount_{{forloop.counter}}" value="{{order.shipping_with_tax|truncate_decimal:2}}" />
     {% endif %}
   {% endif %}
 {% else %}
   {# no discount #}
-  <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item}}" />
+  <input type="hidden" name="item_name_{{forloop.counter}}" value="{{item.description|force_escape}}" />
   <input type="hidden" name="amount_{{forloop.counter}}" value="{{item.unit_price|truncate_decimal:2}}" />
 {% endif %}
 {% endspaceless %}
