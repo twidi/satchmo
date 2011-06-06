@@ -308,6 +308,83 @@ class ShopTest(TestCase):
         response = self.client.get('/admin/print/shippinglabel/%d/' % order_id)
         self.assertContains(response, 'reportlab', status_code=200)
 
+    def test_two_checkouts_dont_duplicate_contact(self):
+        """
+        Two checkouts with the same email address do not duplicate contacts
+        Ticket #1264 [Invalid]
+        """
+
+        tax = config_get('TAX','MODULE')
+        tax.update('tax.modules.percent')
+        pcnt = config_get('TAX', 'PERCENT')
+        pcnt.update('10')
+        shp = config_get('TAX', 'TAX_SHIPPING')
+        shp.update(False)
+
+        # First checkout
+        self.test_cart_adding()
+        response = self.client.post(url('satchmo_checkout-step1'), get_step1_post_data(self.US))
+        self.assertRedirects(response, url('DUMMY_satchmo_checkout-step2'),
+            status_code=302, target_status_code=200)
+        data = {
+            'credit_type': 'Visa',
+            'credit_number': '4485079141095836',
+            'month_expires': '1',
+            'year_expires': '2014',
+            'ccv': '552',
+            'shipping': 'FlatRate'}
+        response = self.client.post(url('DUMMY_satchmo_checkout-step2'), data)
+        self.assertRedirects(response, url('DUMMY_satchmo_checkout-step3'),
+            status_code=302, target_status_code=200)
+        response = self.client.get(url('DUMMY_satchmo_checkout-step3'))
+        amount = smart_str('Shipping + ' + moneyfmt(Decimal('4.00')))
+        self.assertContains(response, amount, count=1, status_code=200)
+
+        amount = smart_str('Tax + ' + moneyfmt(Decimal('4.60')))
+        self.assertContains(response, amount, count=1, status_code=200)
+
+        amount = smart_str('Total = ' + moneyfmt(Decimal('54.60')))
+        self.assertContains(response, amount, count=1, status_code=200)
+
+        response = self.client.post(url('DUMMY_satchmo_checkout-step3'), {'process' : 'True'})
+        self.assertRedirects(response, url('DUMMY_satchmo_checkout-success'),
+            status_code=302, target_status_code=200)
+
+        # Second checkout
+        self.test_cart_adding()
+        response = self.client.post(url('satchmo_checkout-step1'), get_step1_post_data(self.US))
+        self.assertRedirects(response, url('DUMMY_satchmo_checkout-step2'),
+            status_code=302, target_status_code=200)
+        data = {
+            'credit_type': 'Visa',
+            'credit_number': '4485079141095836',
+            'month_expires': '1',
+            'year_expires': '2014',
+            'ccv': '552',
+            'shipping': 'FlatRate'}
+        response = self.client.post(url('DUMMY_satchmo_checkout-step2'), data)
+        self.assertRedirects(response, url('DUMMY_satchmo_checkout-step3'),
+            status_code=302, target_status_code=200)
+        response = self.client.get(url('DUMMY_satchmo_checkout-step3'))
+        amount = smart_str('Shipping + ' + moneyfmt(Decimal('4.00')))
+        self.assertContains(response, amount, count=1, status_code=200)
+
+        amount = smart_str('Tax + ' + moneyfmt(Decimal('4.60')))
+        self.assertContains(response, amount, count=1, status_code=200)
+
+        amount = smart_str('Total = ' + moneyfmt(Decimal('54.60')))
+        self.assertContains(response, amount, count=1, status_code=200)
+
+        response = self.client.post(url('DUMMY_satchmo_checkout-step3'), {'process' : 'True'})
+        self.assertRedirects(response, url('DUMMY_satchmo_checkout-success'),
+            status_code=302, target_status_code=200)
+
+        self.assertEqual(len(mail.outbox), 2)
+
+        qs = Contact.objects.filter(email="sometester@example.com")
+        # We expects that the contact do not duplicate
+        self.assertEqual(len(qs), 1)
+
     def test_contact_login(self):
         """Check that when a user logs in, the user's existing Contact will be
         used.

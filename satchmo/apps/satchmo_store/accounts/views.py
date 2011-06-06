@@ -103,16 +103,23 @@ def _assign_cart(request):
 def _get_prev_cart(request):
     try:
         contact = Contact.objects.from_request(request)
+        if not contact:
+            return None
         saved_cart = contact.cart_set.latest('date_time_created')
         # If the latest cart has len == 0, cart is unusable.
-        if len(saved_cart) and 'cart' in request.session:
-            existing_cart = Cart.objects.from_request(request, create=False)
-            if ( (len(existing_cart) == 0) or config_value('SHOP','PERSISTENT_CART_MERGE') ):
-                # Merge the two carts together
-                saved_cart.merge_carts(existing_cart)
-                request.session['cart'] = saved_cart.id
-    except Exception, e:
-        pass
+        if saved_cart and len(saved_cart):
+            if 'cart' in request.session:
+                existing_cart = Cart.objects.from_request(request, create=False)
+                if ( (len(existing_cart) == 0) or config_value('SHOP','PERSISTENT_CART_MERGE') ):
+                    # Merge the two carts together
+                    saved_cart.merge_carts(existing_cart)
+
+            request.session['cart'] = saved_cart.id
+            log.debug('retrieved cart: %s', saved_cart)
+            return saved_cart
+
+    except Exception:
+        return None
 
 def register_handle_address_form(request, redirect=None, action_required=''):
     """
@@ -236,10 +243,14 @@ def activate(request, activation_key):
         # ...but we cannot authenticate without password... so we work-around authentication
         account.backend = settings.AUTHENTICATION_BACKENDS[0]
         _login(request, account)
-        contact = Contact.objects.get(user=account)
-        request.session[CUSTOMER_ID] = contact.id
-        send_welcome_email(contact.email, contact.first_name, contact.last_name)
-        signals.satchmo_registration_verified.send(contact, contact=contact)
+        try:
+            contact = Contact.objects.get(user=account)
+            request.session[CUSTOMER_ID] = contact.id
+            send_welcome_email(contact.email, contact.first_name, contact.last_name)
+            signals.satchmo_registration_verified.send(contact, contact=contact)
+        except Contact.DoesNotExist:
+            # Treated for better compatibility with registation tests without error
+            pass
 
     context = RequestContext(request, {
         'account': account,

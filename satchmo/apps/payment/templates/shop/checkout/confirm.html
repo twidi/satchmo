@@ -16,7 +16,11 @@
 {% with order.credit_card.credit_type as credit_card_type %}
 {% with order.credit_card.display_cc as credit_card_number %}
 {% with order.balance|currency as order_total %}
-{% blocktrans %}Your {{ credit_card_type }} card ending in {{ credit_card_number }} will be charged {{ order_total }}.{% endblocktrans %}
+{% if credit_card_number %}
+    {% blocktrans %}Your {{ credit_card_type }} card ending in {{ credit_card_number }} will be charged {{ order_total }}.{% endblocktrans %}
+    {% else %}
+    {% blocktrans %}This order will be charged on your account for {{ order_total }}.{% endblocktrans %}
+{% endif %}
 {% endwith %}
 {% endwith %}
 {% endwith %}

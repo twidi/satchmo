@@ -19,12 +19,12 @@ urlpatterns = patterns('satchmo_ext.newsletter.views',
         {'result_template' : 'newsletter/ajah.html'}, 'newsletter_unsubscribe_ajah'),
     (r'^update/$', 'update_subscription', {}, 'newsletter_update'),
 )
-
-newsbase = r'^' + config_value('NEWSLETTER','NEWSLETTER_SLUG') + '/'    
-newspatterns = patterns('',
-    (newsbase, include('satchmo_ext.newsletter.urls'))
-)
+patterns_fn = patterns
 
 def add_newsletter_urls(sender, patterns=(), **kwargs):
+    newsbase = r'^' + config_value('NEWSLETTER','NEWSLETTER_SLUG') + '/'    
     log.debug("Adding newsletter urls at %s", newsbase)
+    newspatterns = patterns_fn('',
+        (newsbase, include('satchmo_ext.newsletter.urls'))
+    )
     patterns += newspatterns

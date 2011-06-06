@@ -242,7 +242,7 @@ class Shipper(BaseShipper):
 
                 if not error:
                     this_charge = float(response.documentElement.getElementsByTagName('NetCharge')[0].firstChild.nodeValue)
-                    this_discount = float(response.documentElement.getElementsByTagName('EffectiveNetDiscount')[0].firstChild.nodeValue)
+                    this_discount = float(response.documentElement.getElementsByTagName('TotalDiscount')[0].firstChild.nodeValue) 
                     self.delivery_days = response.documentElement.getElementsByTagName('TimeInTransit')[0].firstChild.nodeValue
 
                     total_cost = this_charge + this_discount
@@ -284,9 +284,8 @@ class Shipper(BaseShipper):
 
                 if not error:
                     this_charge = float(response.documentElement.getElementsByTagName('NetCharge')[0].firstChild.nodeValue)
-                    this_discount = float(response.documentElement.getElementsByTagName('EffectiveNetDiscount')[0].firstChild.nodeValue)
+                    this_discount = float(response.documentElement.getElementsByTagName('TotalDiscount')[0].firstChild.nodeValue)
                     self.delivery_days = response.documentElement.getElementsByTagName('TimeInTransit')[0].firstChild.nodeValue
-
                     total_cost = this_charge + this_discount
                     self.charges += total_cost
                     

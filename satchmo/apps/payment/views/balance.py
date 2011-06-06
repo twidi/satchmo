@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from decimal import Decimal
+from django.contrib import messages
 from django.core import urlresolvers
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -112,7 +113,7 @@ def charge_remaining_post(request):
             
         order.recalculate_total()
         
-        request.user.message_set.create(message='Charged for custom product and recalculated totals.')
+        messages.add_message(request, messages.INFO, 'Charged for custom product and recalculated totals.')
 
         notes = data['notes']
         if not notes:

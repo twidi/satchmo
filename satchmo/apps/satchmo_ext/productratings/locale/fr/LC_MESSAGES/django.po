@@ -26,7 +26,7 @@ msgstr "Clé pour l'API Akismet"
 
 #: models.py:11 templates/productratings/_product_ratings.html:17
 msgid "Rating"
-msgstr "Evaluation"
+msgstr "Évaluation"
 
 #: utils.py:49
 msgid "Not Rated"
@@ -38,7 +38,7 @@ msgstr "Avis sur les produits"
 
 #: templates/productratings/_product_ratings.html:8
 msgid "Be the first to review it!"
-msgstr "Soyez le premier à donner votre avis sur ce produit!"
+msgstr "Soyez le premier à donner votre avis sur ce produit !"
 
 #: templates/productratings/_product_ratings.html:12
 #, python-format
@@ -51,8 +51,8 @@ msgstr "Donner son avis sur ce produit"
 
 #: templates/productratings/_product_ratings.html:28
 msgid "Please login to review this product."
-msgstr "Veuillez vous authentifier pour donner votre avis sur ce produit."
+msgstr "Veuillez vous connecter pour donner votre avis sur ce produit."
 
 #: templates/productratings/plugins/sidebar_links.html:3
 msgid "Most Popular"
-msgstr ""
+msgstr "Le plus populaire"

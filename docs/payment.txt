@@ -118,6 +118,10 @@ Now, configure your Paypal Merchant Account through the Paypal website:
 Double check your Satchmo sites domain name to make sure it matches the notification url above:
     9. Go to /admin/sites/site/ and make sure your domain name is the same as the one you configured about in PayPal. In the example above, under Sites put in mydomain.com
 
+There is one note to remember about using paypal with utf-8 characters. By default Paypal will send an IPN call encoded as cp-1252 which 
+will break when the payment module calls PayPal again in utf-8 and there are special characters in the call. The solution is to login to 
+PayPal and change the website encoding of your account on PayPal to utf-8 in your profile settings (bottom right link on the profile page).
+
 .. index:: Google Checkout
 
 Google Checkout
@@ -135,3 +139,10 @@ in order to understand how the process works.
 Sage Pay (Formerly Protx)
 -------------------------
 This processor is included in the default Satchmo store.
+
+.. index:: Sermepa
+
+Sermepa
+-------
+This processor is included in the default Satchmo store. 
+

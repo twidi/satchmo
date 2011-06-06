@@ -19,8 +19,8 @@ msgstr ""
 #: views.py:27
 #, python-format
 msgid "Bad Category: %s"
-msgstr "Catégorie invalide: %s"
+msgstr "Catégorie invalide : %s"
 
 #: templates/product_feeds/plugins/admin_tools.html:3
 msgid "Export Products as CSV"
-msgstr ""
+msgstr "Exporter les produits en CSV"

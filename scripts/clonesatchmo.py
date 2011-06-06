@@ -57,9 +57,6 @@ def check_skeleton_dir(skel_dir):
         return (False, "Invalid skeleton directory. Path should be /path/to/satchmo/projects/skeleton")
     return (True, "")
 
-def install_pil():
-    os.system('pip install %s' % pil_requirements)
-    
 def create_satchmo_site(site_name, skeleton_dir):
     """
     If we are passed a skeleton_dir, use it
@@ -119,15 +116,16 @@ def setup_satchmo(site_name, local_site_name):
     sync_check = os.system('cd %s && python manage.py syncdb' % site_name)
     if sync_check != 0:
         errors.append("Can not syncdb.")
-    l10n_check = os.system('cd %s && python manage.py satchmo_load_l10n' % site_name)
-    if l10n_check != 0:
-        errors.append("Can not load l10n data.")
-    load_check = os.system('cd %s && python manage.py satchmo_load_store' % site_name)
-    if load_check != 0:
-        errors.append("Can not load sample store data.")
-    pricing_check = os.system('cd %s && python manage.py satchmo_rebuild_pricing' % site_name)
-    if pricing_check != 0:
-        errors.append("Can not rebuild pricing.")
+    else:
+        l10n_check = os.system('cd %s && python manage.py satchmo_load_l10n' % site_name)
+        if l10n_check != 0:
+            errors.append("Can not load l10n data.")
+        load_check = os.system('cd %s && python manage.py satchmo_load_store' % site_name)
+        if load_check != 0:
+            errors.append("Can not load sample store data.")
+        pricing_check = os.system('cd %s && python manage.py satchmo_rebuild_pricing' % site_name)
+        if pricing_check != 0:
+            errors.append("Can not rebuild pricing.")
     return errors
     
 if __name__ == '__main__':

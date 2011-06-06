@@ -115,7 +115,7 @@ number of places you might want to configure.
 
 2. In addition to the Satchmo specific settings, there are some Django settings you will want to make sure are properly set:
 
-    - Make sure that your ``DATABASE_ENGINE`` variable is also set correctly.
+    - Make sure that your ``DATABASES['default']['ENGINE']`` variable is also set correctly.
     - You should ensure that all of your paths are setup correctly.  Key ones to look at are:
 
         + ``MEDIA_ROOT`` (this is where images will be stored)
@@ -316,12 +316,13 @@ Disabling the Live Settings System
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Once your store is live, you may want to disable the admin ability to edit the site configuration.  To do this, edit your settings.py file and add a new entry ``LIVESETTINGS_OPTIONS`` with the settings you want to lock into place.
+The easiest way to get it is by the URL http://your.site/settings/export/.
 
 The ``LIVESETTINGS_OPTIONS`` must be formatted as follows::
 
     LIVESETTINGS_OPTIONS = {
         1 : {
-            'DB' : (True|False),
+            'DB' : False,   # or True for use db and ignore these settings
             'SETTINGS' : {
                 'GROUPKEY' : {
                     'KEY' : val,

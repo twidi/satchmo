@@ -14,13 +14,14 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from l10n.models import Country
 from l10n.utils import moneyfmt
 from livesettings import ConfigurationSettings, config_value
-from payment.fields import PaymentChoiceCharField
 from product.models import Discount, Product, Price, get_product_quantity_adjustments
 from product.prices import PriceAdjustmentCalc, PriceAdjustment
 from satchmo_store.contact.models import Contact
 from satchmo_utils.fields import CurrencyField
 from satchmo_utils.numbers import trunc_decimal
-from shipping.fields import ShippingChoiceCharField
+import shipping.fields
+import payment.config
+from satchmo_utils.iterchoices import iterchoices_db
 from tax.utils import get_tax_processor
 import datetime
 import keyedcache
@@ -646,7 +647,7 @@ class Order(models.Model):
         max_length=50, blank=True, null=True)
     shipping_method = models.CharField(_("Shipping Method"),
         max_length=50, blank=True, null=True)
-    shipping_model = ShippingChoiceCharField(_("Shipping Models"),
+    shipping_model = models.CharField(_("Shipping Models"), choices=iterchoices_db(shipping.fields.shipping_choices),
         max_length=30, blank=True, null=True)
     shipping_cost = CurrencyField(_("Shipping Cost"),
         max_digits=18, decimal_places=10, blank=True, null=True)
@@ -1228,7 +1229,7 @@ class OrderStatus(models.Model):
         get_latest_by = 'time_stamp'
 
 class OrderPaymentBase(models.Model):
-    payment = PaymentChoiceCharField(_("Payment Method"),
+    payment = models.CharField(_("Payment Method"), choices=iterchoices_db(payment.config.labelled_gateway_choices),
         max_length=25, blank=True)
     amount = CurrencyField(_("amount"),
         max_digits=18, decimal_places=10, blank=True, null=True)

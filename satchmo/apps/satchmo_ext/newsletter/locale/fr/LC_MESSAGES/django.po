@@ -54,13 +54,14 @@ msgstr ""
 "Donnez le nom exact de la liste de mailing mise en place par le gestionnaire."
 
 #: config.py:31
-#, fuzzy
 msgid "Newsletter Slug"
-msgstr "Paramètres des lettres d'information"
+msgstr "Slug de la newsletter"
 
 #: config.py:32
 msgid "The url slug for the newsletter.  Requires server restart if changed."
 msgstr ""
+"La partie unique de l'url pour cette lettre d'information. Nécessite "
+"un redémarrage du serveur si modifié"
 
 #: forms.py:16
 msgid "Full Name"
@@ -70,7 +71,7 @@ msgstr "Nom complet"
 #: templates/newsletter/unsubscribe_form.html:20
 #: templates/newsletter/update_form.html:20
 msgid "Email address"
-msgstr "Adresse de messagerie "
+msgstr "Email"
 
 #: forms.py:18 templates/newsletter/subscribe_form.html:23
 #: templates/newsletter/update_form.html:22
@@ -86,46 +87,46 @@ msgstr "Souscription mise à jour pour %(email)s."
 #: mailman.py:46 simple.py:37
 #, python-format
 msgid "Already subscribed %(email)s."
-msgstr "L'Email %(email)s est déjà inscrit."
+msgstr "L'email %(email)s est déjà inscrit."
 
 #: mailman.py:48 simple.py:40
 #, python-format
 msgid "Already removed %(email)s."
-msgstr "L'Email %(email)s est déjà désinscrit."
+msgstr "L'email %(email)s est déjà désinscrit."
 
 #: mailman.py:58 mailman.py:95 simple.py:50
 #, python-format
 msgid "Subscribed: %(email)s"
-msgstr "Inscrit: %(email)s"
+msgstr "Inscrit : %(email)s"
 
 #: mailman.py:61 simple.py:52
 #, python-format
 msgid "Unsubscribed: %(email)s"
-msgstr "Désinscrit: %(email)s"
+msgstr "Désinscrit : %(email)s"
 
 #: mailman.py:87
 #, python-format
 msgid "Already Subscribed: %s"
-msgstr "Déja inscrit: %s"
+msgstr "Déja inscrit : %s"
 
 #: mailman.py:98
 #, python-format
 msgid "Already a member: %(email)s"
-msgstr "Déjà membre: %(email)s"
+msgstr "Déjà membre : %(email)s"
 
 #: mailman.py:102
 msgid "Bad/Invalid email address: blank line"
-msgstr "Adresse email invalide: ligne vierge"
+msgstr "Adresse email invalide : ligne vierge"
 
 #: mailman.py:104
 #, python-format
 msgid "Bad/Invalid email address: %(email)s"
-msgstr "Adresse email invalide: %(email)s"
+msgstr "Adresse email invalide : %(email)s"
 
 #: mailman.py:107
 #, python-format
 msgid "Hostile address (illegal characters): %(email)s"
-msgstr "Adresse contenant des caractères invalides: %(email)s"
+msgstr "Adresse contenant des caractères invalides : %(email)s"
 
 #: models.py:37
 msgid "Subscribed"
@@ -133,7 +134,7 @@ msgstr "Inscrit"
 
 #: models.py:38
 msgid "Email"
-msgstr "Courriel"
+msgstr "Email"
 
 #: models.py:39
 msgid "Creation Date"
@@ -184,8 +185,8 @@ msgstr "Souscription à la lettre d'information"
 #: templates/newsletter/update_form.html:13
 msgid "Please correct the following error:"
 msgid_plural "Please correct the following errors:"
-msgstr[0] "Veuillez corriger l'erreur suivante:"
-msgstr[1] "Veuillez corriger les erreurs suivantes:"
+msgstr[0] "Veuillez corriger l'erreur suivante :"
+msgstr[1] "Veuillez corriger les erreurs suivantes :"
 
 #: templates/newsletter/subscribe_form.html:18
 #: templates/newsletter/unsubscribe_form.html:18

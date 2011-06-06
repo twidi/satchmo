@@ -17,13 +17,14 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: config.py:8
-#, fuzzy
 msgid "Wishlist slug"
-msgstr "Liste de souhaits"
+msgstr "Slug des listes de souhaits."
 
 #: config.py:9
 msgid "The url slug for wishlists.  Requires server restart if changed."
 msgstr ""
+"Partie de l'adresse spécifique pour les listes de souhaits. Nécessite un "
+"redémarrage du serveur si modifié."
 
 #: models.py:33
 msgid "Contact"
@@ -51,15 +52,15 @@ msgstr "Souhaits de produit"
 
 #: views.py:60 views.py:81
 msgid "The product you have requested does not exist."
-msgstr ""
+msgstr "Le produit demandé n'existe pas."
 
 #: views.py:89
 msgid "The contact associated with this request does not exist."
-msgstr ""
+msgstr "Le contact associé à ce souhaite n'existe pas."
 
 #: views.py:96
 msgid "Success"
-msgstr "Succes"
+msgstr "Succès"
 
 #: views.py:98
 msgid "Error"
@@ -70,6 +71,8 @@ msgstr "Erreur"
 msgid ""
 "Wishlist product '%(product)s' could't be added to the cart. %(details)s"
 msgstr ""
+"Le produit '%(product)s' de la liste de souhaits ne peut être ajouté au "
+"panier. %(details)s"
 
 #: views.py:154 views.py:165 views.py:167
 msgid "No such wishlist item."
@@ -77,7 +80,7 @@ msgstr "Pas de tel article dans la liste des souhaits."
 
 #: views.py:160
 msgid "You must be logged in to do that."
-msgstr "Vous devez être connectés pour faire çà."
+msgstr "Vous devez être connectés pour faire cela."
 
 #: templates/wishlist/index.html:7 templates/wishlist/login_required.html:4
 msgid "Home"
@@ -100,7 +103,7 @@ msgstr "Ajouter au panier"
 
 #: templates/wishlist/index.html:35
 msgid "Remove from wishlist"
-msgstr "Retirer de la liste des souhaits"
+msgstr "Retirer de la liste de souhaits"
 
 #: templates/wishlist/login_required.html:9
 #, python-format
@@ -108,13 +111,12 @@ msgid ""
 "Sorry, you must be <a href=\"%(login_url)s\">logged-in</a> to access your "
 "wishlist."
 msgstr ""
-"Désolé, vous devez être connecté à <a href=\"%(login_url)s\">logged-in</a> "
+"Désolé, vous devez être <a href=\"%(login_url)s\">connecté</a> "
 "pour accéder à votre liste de souhaits."
 
 #: templates/wishlist/plugins/product_add_buttons.html:2
-#, fuzzy
 msgid "Add to wishlist"
-msgstr "Retirer de la liste des souhaits"
+msgstr "Ajouter à la liste de souhaits"
 
 #~ msgid "Not enough items of '%s' in stock."
 #~ msgstr "Pas assez d'articles '%s' en stock."

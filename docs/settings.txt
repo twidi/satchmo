@@ -123,7 +123,7 @@ to add any pieces of satchmo.
     especially important for MySQL. If you are using MySQL, you may want to use the
     following statement in your settings file to enforce utf-8 collation::
 
-        DATABASE_OPTIONS = {
+        DATABASES['default']['OPTIONS'] = {
            'init_command' : 'SET NAMES "utf8"',
            }
 

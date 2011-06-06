@@ -9,7 +9,7 @@
 {% load i18n satchmo_currency %}{% block order_details_payment %}{% trans "Payment" %}
 -------
 Method(s): {{ order|order_payment_methods|join:", " }}{% with order.credit_card.credit_type as credit_card_type %}{% with order.credit_card.display_cc as credit_card_number %}{% with order.total|currency as order_total %}
-{% block order_details_payment_body %}{% blocktrans %}{{ credit_card_type }} card ending in {{ credit_card_number }} will be charged {{ order_total }}.{% endblocktrans %}{% endblock order_details_payment_body %}{% endwith %}{% endwith %}{% endwith %}{% endblock order_details_payment %}
+{% block order_details_payment_body %}{% if credit_card_number %}{% blocktrans %}{{ credit_card_type }} card ending in {{ credit_card_number }} will be charged {{ order_total }}.{% endblocktrans %}{% else %}{% blocktrans %}This order will be charged on the customer's account for {{ order_total}}.{% endblocktrans %}{% endif %}{% endblock order_details_payment_body %}{% endwith %}{% endwith %}{% endwith %}{% endblock order_details_payment %}
 
 {% if order.has_downloads %}
 {% trans "This is a downloadable product" %}

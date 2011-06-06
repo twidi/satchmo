@@ -1,3 +1,7 @@
+{# Have been used only by django-keyedcache 1.4.4 and older.
+   Replaced by django.contrib.messages.middleware.MessageMiddleware.
+   Could be removed after Django 1.5 is released.
+#}
 {% if visitor_messages %}
 <div class="messages">
     {% for message in visitor_messages %}<p class="message">{{ message }}</p>{% endfor %}

@@ -24,7 +24,18 @@ LANGUAGES = (
 #These are used when loading the test data
 SITE_NAME = "simple"
 
-DATABASE_NAME = os.path.join(DIRNAME, 'simple.db')
+DATABASES = {
+    'default': {
+        # The last part of ENGINE is 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'ado_mssql'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(DIRNAME, 'simple.db'),  # Or path to database file if using sqlite3
+        #'USER': '',             # Not used with sqlite3.
+        #'PASSWORD': '',         # Not used with sqlite3.
+        'HOST': '',             # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',             # Set to empty string for default. Not used with sqlite3.
+    }
+}
+
 SECRET_KEY = 'EXAMPLE SECRET KEY'
 
 ##### For Email ########

@@ -18,7 +18,7 @@ def send_welcome_email(email, first_name, last_name):
     c = {
         'first_name': first_name,
         'last_name': last_name,
-        'site_url': shop_config.site.domain,
+        'site_url': shop_config.site and shop_config.site.domain or 'localhost',
         'login_url': settings.LOGIN_URL,
     }
     send_store_mail(subject, c, 'registration/welcome.txt', [email],
