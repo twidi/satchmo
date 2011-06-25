@@ -78,6 +78,12 @@ def update(request):
                 init_data['phone'] = contact.primary_phone.phone
             if contact.organization:
                 init_data['organization'] = contact.organization.name
+        else:
+            #If a person has no contact info, try to get some from its user account
+            if request.user:
+                for field in ('email', 'first_name', 'last_name'):
+                    if getattr(request.user, field, False):
+                        init_data[field] = getattr(request.user, field)
 
 
         signals.satchmo_contact_view.send(contact, contact=contact, contact_dict=init_data)
