@@ -187,6 +187,9 @@ class NullCart(object):
     def __len__(self):
         return 0
 
+    def save(self):
+        pass
+
 class OrderCart(NullCart):
     """Allows us to fake a cart if we are reloading an order."""
 
@@ -215,6 +218,9 @@ class OrderCart(NullCart):
 
     def __len__(self):
         return self.numItems
+
+    def __iter__(self):
+        return iter(self.cartitem_set.all())
 
 class CartManager(models.Manager):
 
@@ -811,7 +817,7 @@ class Order(models.Model):
         """Given the addressee name, try to return a first name"""
         return ' '.join(self.ship_addressee.split()[0:-1]) or ''
     ship_first_name = property(_ship_first_name)
-        
+
     def _ship_last_name(self):
         """Given the addressee name, try to return a last name"""
         return ' '.join(self.ship_addressee.split()[-1:]) or ''

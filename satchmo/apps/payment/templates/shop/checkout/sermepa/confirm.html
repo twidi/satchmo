@@ -29,9 +29,9 @@
 <input type="hidden" name="Ds_Merchant_ConsumerLanguage" value="2" />	{# English #}
 
 {% if order.partially_paid %}
-	<input type="hidden" name="Ds_Merchant_ProductDescription" value="Remaining Balance for order {{order.id}}" />
+	<input type="hidden" name="Ds_Merchant_ProductDescription" value="{% blocktrans with order.id as order_id %}Remaining Balance for order #{{ order_id }}{% blocktrans %}" />
 {% else %}
-	<input type="hidden" name="Ds_Merchant_ProductDescription" value="Order {{order.id}}" />
+	<input type="hidden" name="Ds_Merchant_ProductDescription" value="{% blocktrans with order.id as order_id %}Order #{{ order_id }}{% blocktrans %}" />
 {% endif %}
 
 <input type="hidden" name="Ds_Merchant_Amount" value="{{amount}}" />
