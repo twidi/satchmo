@@ -338,7 +338,7 @@ class SimplePayShipForm(forms.Form):
         shiphide = config_value('SHIPPING','HIDING')
         # Handle a partial payment and make sure we don't show a shipping choice after one has
         # already been chosen
-        if self.order.is_partially_paid and shipping_dict.get(self.order.shipping_model, False):
+        if self.order and self.order.is_partially_paid and shipping_dict.get(self.order.shipping_model, False):
             self.fields['shipping'] = forms.CharField(max_length=30, initial=self.order.shipping_model,
                 widget=forms.HiddenInput(attrs={'value' : shipping_choices[0][0]}))
             self.shipping_hidden = True
